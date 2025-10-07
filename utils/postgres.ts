@@ -1,5 +1,5 @@
 import { Pool } from "pg";
-import { Car } from "../models/car";
+import { car_model } from "../models/car_model";
 
 // Database connection configuration
 const dbConfig = {
@@ -35,7 +35,7 @@ export const testConnection = async () => {
 // Database operations for cars
 export const carQueries = {
   // Insert a new car
-  async insert(car: Omit<Car, "id" | "created_at">): Promise<Car> {
+  async insert(car: Omit<car_model, "id" | "created_at">): Promise<car_model> {
     const query = `
       INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -57,61 +57,13 @@ export const carQueries = {
   },
 
   // Get all cars
-  async getAll(): Promise<Car[]> {
+  async getAll(): Promise<car_model[]> {
     const query = "SELECT * FROM cars ORDER BY created_at DESC";
     const result = await pool.query(query);
     return result.rows;
   },
 
-  // Get car by ID
-  async getById(id: number): Promise<Car | null> {
-    const query = "SELECT * FROM cars WHERE id = $1";
-    const result = await pool.query(query, [id]);
-    return result.rows[0] || null;
-  },
-
-  // Get car by VIN
-  async getByVin(vin: string): Promise<Car | null> {
-    const query = "SELECT * FROM cars WHERE vin = $1";
-    const result = await pool.query(query, [vin]);
-    return result.rows[0] || null;
-  },
-
-  // Search cars by make and model
-  async searchByMakeModel(make: string, model: string): Promise<Car[]> {
-    const query =
-      "SELECT * FROM cars WHERE make ILIKE $1 AND model ILIKE $2 ORDER BY created_at DESC";
-    const result = await pool.query(query, [`%${make}%`, `%${model}%`]);
-    return result.rows;
-  },
-
-  // Update car
-  async update(id: number, updates: Partial<Car>): Promise<Car | null> {
-    const fields = Object.keys(updates).filter(
-      (key) => key !== "id" && key !== "created_at"
-    );
-    const setClause = fields
-      .map((field, index) => `${field} = $${index + 2}`)
-      .join(", ");
-
-    if (!setClause) {
-      throw new Error("No fields to update");
-    }
-
-    const query = `UPDATE cars SET ${setClause} WHERE id = $1 RETURNING *`;
-    const values = [id, ...fields.map((field) => updates[field as keyof Car])];
-
-    const result = await pool.query(query, values);
-    return result.rows[0] || null;
-  },
-
-  // Delete car
-  async delete(id: number): Promise<boolean> {
-    const query = "DELETE FROM cars WHERE id = $1";
-    const result = await pool.query(query, [id]);
-    return result.rowCount > 0;
-  },
-
+ 
   // Get cars by filters
   async getByFilters(filters: {
     make?: string;
@@ -121,7 +73,7 @@ export const carQueries = {
     maxPrice?: number;
     color?: string;
     maxMileage?: number;
-  }): Promise<Car[]> {
+  }): Promise<car_model[]> {
     let query = "SELECT * FROM cars WHERE 1=1";
     const values: any[] = [];
     let paramIndex = 1;
@@ -171,6 +123,7 @@ export const carQueries = {
     query += " ORDER BY created_at DESC";
 
     const result = await pool.query(query, values);
+    console.log("Result:", result.rows);
     return result.rows;
   },
 };
