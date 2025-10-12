@@ -10,12 +10,12 @@
     "lint": "next lint",
     "test:email": "NODE_OPTIONS='--loader ts-node/esm' ts-node --project tsconfig.json scripts/test-email.ts",
     "send:customer-emails": "NODE_OPTIONS='--loader ts-node/esm' ts-node --project tsconfig.json scripts/send-customer-video.ts",
-    "db:start": "cd ../localDB && docker-compose up -d",
-    "db:stop": "cd ../localDB && docker-compose down -v",
-    "db:restart": "cd ../localDB && docker-compose restart",
-    "db:reset": "cd ../localDB && docker-compose down -v && docker-compose up -d",
-    "db:logs": "cd ../localDB && docker-compose logs -f",
-    "db:status": "cd ../localDB && docker-compose ps"
+    "db:start": "cd localDB && docker-compose up -d",
+    "db:stop": "cd localDB && docker-compose down -v",
+    "db:restart": "cd localDB && docker-compose restart",
+    "db:reset": "cd localDB && docker-compose down -v && docker-compose up -d",
+    "db:logs": "cd localDB && docker-compose logs -f",
+    "db:status": "cd localDB && docker-compose ps"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.699.0",
