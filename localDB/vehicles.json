@@ -1,0 +1,122 @@
+[
+  {
+    "vin": "1HGBH41JXMN109186",
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2021,
+    "engine_cc": 1500,
+    "color": "Silver",
+    "mileage": 25000,
+    "price": 22000.00
+  },
+  {
+    "vin": "1FTFW1ET5DFC12345",
+    "make": "Ford",
+    "model": "F-150",
+    "year": 2020,
+    "engine_cc": 3500,
+    "color": "Blue",
+    "mileage": 45000,
+    "price": 35000.00
+  },
+  {
+    "vin": "WBAFR9C5XDC123456",
+    "make": "BMW",
+    "model": "3 Series",
+    "year": 2019,
+    "engine_cc": 2000,
+    "color": "Black",
+    "mileage": 38000,
+    "price": 28000.00
+  },
+  {
+    "vin": "1N4AL3AP8EC123789",
+    "make": "Nissan",
+    "model": "Altima",
+    "year": 2022,
+    "engine_cc": 2500,
+    "color": "White",
+    "mileage": 15000,
+    "price": 26000.00
+  },
+  {
+    "vin": "1J4RR4GG2BC123456",
+    "make": "Jeep",
+    "model": "Grand Cherokee",
+    "year": 2021,
+    "engine_cc": 3600,
+    "color": "Red",
+    "mileage": 32000,
+    "price": 42000.00
+  },
+  {
+    "vin": "5NPE34AF4HH123456",
+    "make": "Hyundai",
+    "model": "Elantra",
+    "year": 2020,
+    "engine_cc": 2000,
+    "color": "Gray",
+    "mileage": 28000,
+    "price": 18000.00
+  },
+  {
+    "vin": "1FMCU9HD6KUA12345",
+    "make": "Ford",
+    "model": "Explorer",
+    "year": 2019,
+    "engine_cc": 3000,
+    "color": "Black",
+    "mileage": 55000,
+    "price": 29000.00
+  },
+  {
+    "vin": "2HGFC2F59MH123456",
+    "make": "Honda",
+    "model": "Accord",
+    "year": 2021,
+    "engine_cc": 1800,
+    "color": "White",
+    "mileage": 22000,
+    "price": 24000.00
+  },
+  {
+    "vin": "1G1ZD5ST6JF123456",
+    "make": "Chevrolet",
+    "model": "Malibu",
+    "year": 2018,
+    "engine_cc": 1600,
+    "color": "Silver",
+    "mileage": 67000,
+    "price": 16000.00
+  },
+  {
+    "vin": "KMHD35LH3HU123456",
+    "make": "Kia",
+    "model": "Sorento",
+    "year": 2017,
+    "engine_cc": 2700,
+    "color": "Blue",
+    "mileage": 78000,
+    "price": 19000.00
+  },
+  {
+    "vin": "1HGCM82633A123456",
+    "make": "Honda",
+    "model": "CR-V",
+    "year": 2023,
+    "engine_cc": 1900,
+    "color": "Black",
+    "mileage": 5000,
+    "price": 32000.00
+  },
+  {
+    "vin": "1FTEW1CP5JFA12345",
+    "make": "Ford",
+    "model": "Mustang",
+    "year": 2018,
+    "engine_cc": 5000,
+    "color": "Red",
+    "mileage": 45000,
+    "price": 35000.00
+  }
+]
