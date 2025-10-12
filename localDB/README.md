@@ -89,35 +89,6 @@ POSTGRES_USER=app               # Database username
 POSTGRES_PASSWORD=app           # Database password - local
 ```
 
-## Usage in Your Application
-
-Import the database utilities in your Next.js API routes:
-
-```typescript
-import { carQueries, testConnection } from '../utils/postgres';
-
-// Test connection
-await testConnection();
-
-// Insert a car
-const newCar = await carQueries.insert({
-  vin: '1HGBH41JXMN109186',
-  make: 'Honda',
-  model: 'Civic',
-  year: 2021,
-  engine_cc: 1500,
-  color: 'Silver',
-  mileage: 25000,
-  price: 22000.00
-});
-
-// Search cars
-const hondaCars = await carQueries.searchByMakeModel('Honda', 'Civic');
-
-// Get all cars
-const allCars = await carQueries.getAll();
-```
-
 ## Available Scripts
 
 - `npm run db:start` - Start the database containers
@@ -145,34 +116,3 @@ If port 5432 is already in use, you can change it in `docker-compose.yaml`:
 ports:
   - "5433:5432"  # Use port 5433 instead
 ```
-
-Remember to update your `POSTGRES_PORT` environment variable accordingly.
-
-## JSON Vehicle Data Format
-
-The `vehicles.json` file should contain an array of vehicle objects with this structure:
-
-```json
-[
-  {
-    "vin": "1HGBH41JXMN109186",
-    "make": "Honda",
-    "model": "Civic", 
-    "year": 2021,
-    "engine_cc": 1500,
-    "color": "Silver",
-    "mileage": 25000,
-    "price": 22000.00
-  }
-]
-```
-
-## Development Notes
-
-- The `init.sql` script runs automatically when the container starts for the first time
-- The `seed-from-json.sql` script runs after init.sql and seeds the database
-- Data persists in a Docker volume named `pgdata`
-- The database uses UTC timestamps by default
-- All text searches are case-insensitive using ILIKE
-- To update vehicle data, edit `vehicles.json` and run `./update-seed-data.sh`
-- Use `npm run db:reset` to start with a fresh database
