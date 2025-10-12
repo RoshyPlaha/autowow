@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Background
+In this project- I'm combining two passions of mine. Building tech and cars. The preface to this project is that I spend a lot of time on car trading websites - browsing for cars with all manner of specifications, price, age and rarity. The current website I use are Autotrader and Carandclassic. Whilst they provide an overall good user experience, I feel we are missing something in how we should be interacting with these websites in the advent of Large Language Model (LLM) commoditisation.
 
 ## Getting Started
 
-First, run the development server:
+First, run the development DB for via Docker (which is a prerequisite):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run db:start
 ```
+Navigate to localhost:8080 and use or the credentials in the /localDB folder
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Secondly, ensure you have nvm 20.11.1 or higher is installed. 
+```bash
+npm install
+```
+Lastly, to start the web server and visit localhost:3000
+```bash
+npm run dev
+```
