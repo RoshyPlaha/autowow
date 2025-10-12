@@ -27,11 +27,31 @@ Return ONLY this JSON structure with the extracted values:
 }
 
 Rules:
-- If car make is "mercedes" then return "Mercedes-Benz"
 - If any information is not found, use null for optional fields
 - Ensure year, engine_cc, mileage, and price are numbers (not strings)
 - If the word 'truck' comes up ignore as this is not a model type
 - the model should never be the same name of the make. if the model is the same name as the make, return an empty string for the model
+- if no car name is mentioned by the text to analyze - from the below list, return an empty string for the make and model
+
+car names translation:
+- mercedes -> mercedes-benz
+- bmw -> bmw
+- audi -> audi
+- volvo -> volvo
+- volkswagen -> volkswagen
+- peugeot -> peugeot
+- renault -> renault
+- citroen -> citroen
+- fiat -> fiat
+- skoda -> skoda
+- land rover -> land rover
+- jeep -> jeep
+- toyota -> toyota
+- honda -> honda
+- nissan -> nissan
+- hyundai -> hyundai
+- kia -> kia
+- mazda -> mazda
 `;
 
 
