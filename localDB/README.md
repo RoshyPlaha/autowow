@@ -13,11 +13,10 @@ This directory contains the PostgreSQL database setup for AutoWow application.
 
 ## Quick Start
 
-### 1. Start the Database
-
+### 1. Start the Database from the autowow directory
 ```bash
-# From the autowow directory
 npm run db:start
+```
 
 # Or manually from localDB directory
 cd localDB
