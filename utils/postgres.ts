@@ -1,5 +1,5 @@
 import { Pool } from "pg";
-import { car_model } from "../models/car_model";
+import { car } from "../models/car_model";
 
 // Database connection configuration
 const dbConfig = {
@@ -35,7 +35,7 @@ export const testConnection = async () => {
 // Database operations for cars
 export const carQueries = {
   // Insert a new car
-  async insert(car: Omit<car_model, "id" | "created_at">): Promise<car_model> {
+  async insert(car: Omit<car, "id" | "created_at">): Promise<car> {
     const query = `
       INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
@@ -57,23 +57,24 @@ export const carQueries = {
   },
 
   // Get all cars
-  async getAll(): Promise<car_model[]> {
+  async getAll(): Promise<car[]> {
     const query = "SELECT * FROM cars ORDER BY created_at DESC";
     const result = await pool.query(query);
     return result.rows;
   },
 
- 
   // Get cars by filters
   async getByFilters(filters: {
     make?: string;
     model?: string;
-    year?: number;
+    minYear?: number;
+    maxYear?: number;
     minPrice?: number;
     maxPrice?: number;
-    color?: string;
-    maxMileage?: number;
-  }): Promise<car_model[]> {
+    color?: string[] | null;
+    mileagemin?: number;
+    mileagemax?: number;
+  }): Promise<car[]> {
     let query = "SELECT * FROM cars WHERE 1=1";
     const values: any[] = [];
     let paramIndex = 1;
@@ -90,9 +91,15 @@ export const carQueries = {
       paramIndex++;
     }
 
-    if (filters.year) {
-      query += ` AND year = $${paramIndex}`;
-      values.push(filters.year);
+    if (filters.minYear) {
+      query += ` AND year >= $${paramIndex}`;
+      values.push(filters.minYear);
+      paramIndex++;
+    }
+
+    if (filters.maxYear) {
+      query += ` AND year <= $${paramIndex}`;
+      values.push(filters.maxYear);
       paramIndex++;
     }
 
@@ -108,22 +115,40 @@ export const carQueries = {
       paramIndex++;
     }
 
-    if (filters.color) {
-      query += ` AND color ILIKE $${paramIndex}`;
-      values.push(`%${filters.color}%`);
+    if (filters.color && filters.color.length > 0) {
+      // Use parentheses to properly group OR conditions
+      const colorConditions = filters.color
+        .map(() => {
+          const condition = `color ILIKE $${paramIndex}`;
+          paramIndex++;
+          return condition;
+        })
+        .join(" OR ");
+
+      query += ` AND (${colorConditions})`;
+      filters.color.forEach((color) => {
+        values.push(`%${color}%`);
+      });
+    }
+
+    if (filters.mileagemin) {
+      query += ` AND mileage >= $${paramIndex}`;
+      values.push(filters.mileagemin);
       paramIndex++;
     }
 
-    if (filters.maxMileage) {
+    if (filters.mileagemax) {
       query += ` AND mileage <= $${paramIndex}`;
-      values.push(filters.maxMileage);
+      values.push(filters.mileagemax);
       paramIndex++;
     }
 
     query += " ORDER BY created_at DESC";
 
+    console.log("Query:", query, values);
+
     const result = await pool.query(query, values);
-    console.log("Result:", result.rows);
+    // console.log("Result:", result.rows);
     return result.rows;
   },
 };

@@ -1,25 +1,24 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { car_model } from "models/car_model";
+import { car } from "models/car_model";
+import { SemanticCarModel } from "models/semantic_model";
+import { carQueries } from "../../utils/postgres";
+import { extractSemanticModel } from "service/semantic-extractor";
 
 type ResponseData = {
-  cars: car_model[];
+  cars: car[];
 };
-
-
-import { carQueries } from "../../utils/postgres";
-import { convertNLPToModel } from "service/nlp_to_model";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
   try {
-
     console.log("Request body:", req.body);
+    
+    const semtantic_car_model: SemanticCarModel = await extractSemanticModel(req.body.message);
 
-    const car_model = await convertNLPToModel(req.body.message);
-
-    const rows = await carQueries.getByFilters(car_model);
+    console.log("Semtantic car model:", semtantic_car_model);
+    const rows = await carQueries.getByFilters(semtantic_car_model);
 
     return res.status(200).json({ cars: rows || [] });
   } catch (error) {
