@@ -67,10 +67,11 @@ export const carQueries = {
   async getByFilters(filters: {
     make?: string;
     model?: string;
-    year?: number;
+    minYear?: number;
+    maxYear?: number;
     minPrice?: number;
     maxPrice?: number;
-    color?: string[];
+    color?: string[] | null;
     mileagemin?: number;
     mileagemax?: number;
   }): Promise<car[]> {
@@ -90,9 +91,15 @@ export const carQueries = {
       paramIndex++;
     }
 
-    if (filters.year) {
-      query += ` AND year = $${paramIndex}`;
-      values.push(filters.year);
+    if (filters.minYear) {
+      query += ` AND year >= $${paramIndex}`;
+      values.push(filters.minYear);
+      paramIndex++;
+    }
+
+    if (filters.maxYear) {
+      query += ` AND year <= $${paramIndex}`;
+      values.push(filters.maxYear);
       paramIndex++;
     }
 
