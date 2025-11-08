@@ -55,7 +55,7 @@ If any information is not found, use empty string "".`;
   try {
     carInfo = JSON.parse(result.text);
   } catch (error) {
-    console.error("Failed to parse JSON response:", result.text);
+    console.error(`Failed to parse JSON response: ${result.text}. Got error: ${error}`);
     carInfo = { make: "", model: "", colour: "" };
   }
 

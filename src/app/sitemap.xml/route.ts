@@ -1,9 +1,4 @@
-import { getAllBlogThumbnails } from "@/lib/get-blogs";
-import { BlogThumbnail } from "shared_objects/blog";
 export async function GET() {
-
-    const posts = await getAllBlogThumbnails()
-
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
@@ -24,18 +19,11 @@ export async function GET() {
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
       </url>
-      ${posts.map((post: BlogThumbnail) => 
-        `<url>
-          <loc>https://capsules.today/blog/${post.slug}</loc>
-          <lastmod>${new Date(post.date).toISOString()}</lastmod>
-          <changefreq>monthly</changefreq>
-          <priority>0.8</priority>
-        </url>`).join('')}
-    </urlset>`
+    </urlset>`;
 
   return new Response(xml, {
     headers: {
-      'Content-Type': 'application/xml',
+      "Content-Type": "application/xml",
     },
-  })
-} 
+  });
+}

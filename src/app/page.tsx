@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-import { Header } from "@/components/layout/header";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 
 import { Footer } from "@/components/layout/footer";

@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 import { Header } from "@/components/layout/header";
 import Script from "next/script";
-import { AUTH_STATUS_CHANGED } from "@/lib/auth-events";
 
 import { Footer } from "@/components/layout/footer";
 
