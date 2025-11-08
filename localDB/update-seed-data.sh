@@ -26,7 +26,30 @@ if command -v jq &> /dev/null; then
     echo "        -- Insert vehicles from JSON data" >> seed-from-json.sql
     
     # Process each vehicle in the JSON file
-    jq -r '.[] | "        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price) VALUES (''\(.vin)'', ''\(.make)'', ''\(.model)'', \(.year), \(.engine_cc // "NULL"), ''\(.color)'', \(.mileage // "NULL"), \(.price // "NULL"));"' vehicles.json >> seed-from-json.sql
+    jq_filter="
+      def sql_str(s):
+        if s == null or s == \"\" then \"NULL\"
+        else \"'\" + (s | gsub(\"'\"; \"''\")) + \"'\"
+        end;
+
+      def sql_num(n):
+        if n == null or n == \"\" then \"NULL\"
+        else (n | tostring)
+        end;
+
+      .[] |
+        \"        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price) VALUES (\" +
+        sql_str(.vin) + \", \" +
+        sql_str(.make) + \", \" +
+        sql_str(.model) + \", \" +
+        sql_num(.year) + \", \" +
+        sql_num(.engine_cc) + \", \" +
+        sql_str(.color) + \", \" +
+        sql_num(.mileage) + \", \" +
+        sql_num(.price) + \");\"
+    "
+
+    jq -r "$jq_filter" vehicles.json >> seed-from-json.sql
     
     echo "" >> seed-from-json.sql
     echo "        RAISE NOTICE 'Successfully seeded database with vehicles from JSON data';" >> seed-from-json.sql

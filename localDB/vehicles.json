@@ -1,122 +1,1002 @@
 [
   {
-    "vin": "1HGBH41JXMN109186",
-    "make": "Honda",
-    "model": "Civic",
+    "vin": "34318355812418737",
+    "make": "Ferrari",
+    "model": "812 Superfast",
     "year": 2021,
-    "engine_cc": 1500,
+    "engine_cc": 2665,
     "color": "Silver",
-    "mileage": 25000,
-    "price": 22000.00
+    "mileage": 27547,
+    "price": 221926.84
   },
   {
-    "vin": "1FTFW1ET5DFC12345",
-    "make": "Ford",
-    "model": "F-150",
-    "year": 2020,
-    "engine_cc": 3500,
-    "color": "Blue",
-    "mileage": 45000,
-    "price": 35000.00
-  },
-  {
-    "vin": "WBAFR9C5XDC123456",
-    "make": "BMW",
-    "model": "3 Series",
-    "year": 2019,
-    "engine_cc": 2000,
-    "color": "Black",
-    "mileage": 38000,
-    "price": 28000.00
-  },
-  {
-    "vin": "1N4AL3AP8EC123789",
-    "make": "Nissan",
-    "model": "Altima",
-    "year": 2022,
-    "engine_cc": 2500,
-    "color": "White",
-    "mileage": 15000,
-    "price": 26000.00
-  },
-  {
-    "vin": "1J4RR4GG2BC123456",
-    "make": "Jeep",
-    "model": "Grand Cherokee",
-    "year": 2021,
-    "engine_cc": 3600,
-    "color": "Red",
-    "mileage": 32000,
-    "price": 42000.00
-  },
-  {
-    "vin": "5NPE34AF4HH123456",
-    "make": "Hyundai",
-    "model": "Elantra",
-    "year": 2020,
-    "engine_cc": 2000,
+    "vin": "75552495545379651",
+    "make": "Mercedes-Benz",
+    "model": "C-Class",
+    "year": 2016,
+    "engine_cc": 3964,
     "color": "Gray",
-    "mileage": 28000,
-    "price": 18000.00
+    "mileage": 131874,
+    "price": 27503.82
   },
   {
-    "vin": "1FMCU9HD6KUA12345",
-    "make": "Ford",
-    "model": "Explorer",
-    "year": 2019,
-    "engine_cc": 3000,
-    "color": "Black",
-    "mileage": 55000,
-    "price": 29000.00
+    "vin": "46615673394553247",
+    "make": "BMW",
+    "model": "M3",
+    "year": 2010,
+    "engine_cc": 1671,
+    "color": "Gray",
+    "mileage": 97941,
+    "price": 20914.71
   },
   {
-    "vin": "2HGFC2F59MH123456",
-    "make": "Honda",
-    "model": "Accord",
-    "year": 2021,
-    "engine_cc": 1800,
-    "color": "White",
-    "mileage": 22000,
-    "price": 24000.00
-  },
-  {
-    "vin": "1G1ZD5ST6JF123456",
+    "vin": "61441697624360760",
     "make": "Chevrolet",
     "model": "Malibu",
-    "year": 2018,
-    "engine_cc": 1600,
+    "year": 2013,
+    "engine_cc": 1955,
+    "color": "Gray",
+    "mileage": 78417,
+    "price": 10849.2
+  },
+  {
+    "vin": "20559825414899396",
+    "make": "Ford",
+    "model": "F-150",
+    "year": 2012,
+    "engine_cc": 3729,
     "color": "Silver",
-    "mileage": 67000,
-    "price": 16000.00
+    "mileage": 94389,
+    "price": 35983.38
   },
   {
-    "vin": "KMHD35LH3HU123456",
-    "make": "Kia",
-    "model": "Sorento",
-    "year": 2017,
-    "engine_cc": 2700,
-    "color": "Blue",
-    "mileage": 78000,
-    "price": 19000.00
-  },
-  {
-    "vin": "1HGCM82633A123456",
-    "make": "Honda",
-    "model": "CR-V",
+    "vin": "69537977466112582",
+    "make": "Ferrari",
+    "model": "812 Superfast",
     "year": 2023,
+    "engine_cc": 1225,
+    "color": "Orange",
+    "mileage": 81107,
+    "price": 497716.8
+  },
+  {
+    "vin": "43722046020541427",
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2011,
+    "engine_cc": 3686,
+    "color": "Red",
+    "mileage": 88436,
+    "price": 19929.13
+  },
+  {
+    "vin": "92337639819878635",
+    "make": "Aston Martin",
+    "model": "Vantage",
+    "year": 2019,
+    "engine_cc": 3687,
+    "color": "Black",
+    "mileage": 47100,
+    "price": 318009.8
+  },
+  {
+    "vin": "19929856237429810",
+    "make": "Hyundai",
+    "model": "Elantra",
+    "year": 2016,
+    "engine_cc": 6241,
+    "color": "Silver",
+    "mileage": 17827,
+    "price": 27121.23
+  },
+  {
+    "vin": "84376261020201380",
+    "make": "McLaren",
+    "model": "Artura",
+    "year": 2015,
+    "engine_cc": 5817,
+    "color": "Orange",
+    "mileage": 66517,
+    "price": 417149.63
+  },
+  {
+    "vin": "92995191450069013",
+    "make": "Bugatti",
+    "model": "Veyron",
+    "year": 2022,
+    "engine_cc": 2180,
+    "color": "White",
+    "mileage": 105674,
+    "price": 229941.11
+  },
+  {
+    "vin": "68644253674315089",
+    "make": "Aston Martin",
+    "model": "Vantage",
+    "year": 2019,
+    "engine_cc": 2555,
+    "color": "Green",
+    "mileage": 20390,
+    "price": 112339.52
+  },
+  {
+    "vin": "81169524377044726",
+    "make": "Bentley",
+    "model": "Bentayga",
+    "year": 2021,
+    "engine_cc": 2207,
+    "color": "Silver",
+    "mileage": 16716,
+    "price": 233812.08
+  },
+  {
+    "vin": "86279124475269138",
+    "make": "Lamborghini",
+    "model": "Huracan",
+    "year": 2010,
+    "engine_cc": 3736,
+    "color": "Black",
+    "mileage": 121001,
+    "price": 198600.68
+  },
+  {
+    "vin": "58024666084564339",
+    "make": "Audi",
+    "model": "Q5",
+    "year": 2017,
+    "engine_cc": 1601,
+    "color": "Orange",
+    "mileage": 105629,
+    "price": 55847.63
+  },
+  {
+    "vin": "37175171529006005",
+    "make": "Audi",
+    "model": "A6",
+    "year": 2024,
+    "engine_cc": 3042,
+    "color": "Silver",
+    "mileage": 131234,
+    "price": 50702.44
+  },
+  {
+    "vin": "47710905220917678",
+    "make": "Bugatti",
+    "model": "Veyron",
+    "year": 2024,
+    "engine_cc": 2042,
+    "color": "Silver",
+    "mileage": 7715,
+    "price": 133986.63
+  },
+  {
+    "vin": "56814039499239986",
+    "make": "Bentley",
+    "model": "Flying Spur",
+    "year": 2018,
+    "engine_cc": 6314,
+    "color": "Green",
+    "mileage": 64879,
+    "price": 493466.89
+  },
+  {
+    "vin": "60589769760558893",
+    "make": "Bentley",
+    "model": "Flying Spur",
+    "year": 2011,
+    "engine_cc": 1239,
+    "color": "Black",
+    "mileage": 69883,
+    "price": 421552.19
+  },
+  {
+    "vin": "25689236685169445",
+    "make": "Bentley",
+    "model": "Bentayga",
+    "year": 2017,
+    "engine_cc": 1667,
+    "color": "Orange",
+    "mileage": 86286,
+    "price": 247559.83
+  },
+  {
+    "vin": "27363772222620459",
+    "make": "Chevrolet",
+    "model": "Malibu",
+    "year": 2014,
+    "engine_cc": 1248,
+    "color": "White",
+    "mileage": 35932,
+    "price": 50068.9
+  },
+  {
+    "vin": "10103504986667006",
+    "make": "Aston Martin",
+    "model": "DBS Superleggera",
+    "year": 2011,
+    "engine_cc": 5835,
+    "color": "Green",
+    "mileage": 36059,
+    "price": 483744.02
+  },
+  {
+    "vin": "16352779143395388",
+    "make": "Kia",
+    "model": "Stinger",
+    "year": 2023,
+    "engine_cc": 4399,
+    "color": "Yellow",
+    "mileage": 40524,
+    "price": 23672.44
+  },
+  {
+    "vin": "55474712844264574",
+    "make": "BMW",
+    "model": "X5",
+    "year": 2022,
+    "engine_cc": 4766,
+    "color": "Blue",
+    "mileage": 78526,
+    "price": 17774.79
+  },
+  {
+    "vin": "78491813871876405",
+    "make": "Toyota",
+    "model": "RAV4",
+    "year": 2023,
+    "engine_cc": 5519,
+    "color": "Orange",
+    "mileage": 37644,
+    "price": 52365.65
+  },
+  {
+    "vin": "21962151702161019",
+    "make": "Lamborghini",
+    "model": "Aventador",
+    "year": 2022,
+    "engine_cc": 1605,
+    "color": "Blue",
+    "mileage": 11803,
+    "price": 287753.33
+  },
+  {
+    "vin": "22248298751476557",
+    "make": "Ford",
+    "model": "Escape",
+    "year": 2023,
+    "engine_cc": 5130,
+    "color": "Gray",
+    "mileage": 52512,
+    "price": 51640.85
+  },
+  {
+    "vin": "86828341735781439",
+    "make": "Toyota",
+    "model": "Prius",
+    "year": 2010,
+    "engine_cc": 6466,
+    "color": "Orange",
+    "mileage": 50884,
+    "price": 48174.65
+  },
+  {
+    "vin": "53321471132491206",
+    "make": "Toyota",
+    "model": "RAV4",
+    "year": 2010,
+    "engine_cc": 3983,
+    "color": "Silver",
+    "mileage": 80486,
+    "price": 14852.98
+  },
+  {
+    "vin": "29452083155683967",
+    "make": "Aston Martin",
+    "model": "Vantage",
+    "year": 2016,
+    "engine_cc": 1704,
+    "color": "Green",
+    "mileage": 84813,
+    "price": 358647.03
+  },
+  {
+    "vin": "92655218761003591",
+    "make": "Kia",
+    "model": "Sportage",
+    "year": 2014,
+    "engine_cc": 3131,
+    "color": "Orange",
+    "mileage": 64675,
+    "price": 50581.26
+  },
+  {
+    "vin": "70648545012957666",
+    "make": "Audi",
+    "model": "A6",
+    "year": 2021,
+    "engine_cc": 5729,
+    "color": "Silver",
+    "mileage": 93932,
+    "price": 42274.21
+  },
+  {
+    "vin": "73712531712343848",
+    "make": "McLaren",
+    "model": "720S",
+    "year": 2011,
+    "engine_cc": 1114,
+    "color": "Yellow",
+    "mileage": 67227,
+    "price": 105895.59
+  },
+  {
+    "vin": "29185152357825753",
+    "make": "Nissan",
+    "model": "370Z",
+    "year": 2019,
+    "engine_cc": 5140,
+    "color": "Silver",
+    "mileage": 141085,
+    "price": 39669.64
+  },
+  {
+    "vin": "75434303922171382",
+    "make": "Ferrari",
+    "model": "F8 Tributo",
+    "year": 2017,
+    "engine_cc": 2783,
+    "color": "Gray",
+    "mileage": 128138,
+    "price": 293434.85
+  },
+  {
+    "vin": "92591479418210847",
+    "make": "Aston Martin",
+    "model": "DBS Superleggera",
+    "year": 2022,
+    "engine_cc": 4874,
+    "color": "Gray",
+    "mileage": 72873,
+    "price": 466021.82
+  },
+  {
+    "vin": "57286944028025378",
+    "make": "Ferrari",
+    "model": "812 Superfast",
+    "year": 2013,
+    "engine_cc": 3154,
+    "color": "Gray",
+    "mileage": 18537,
+    "price": 469333.62
+  },
+  {
+    "vin": "69869285320948202",
+    "make": "Ferrari",
+    "model": "488 GTB",
+    "year": 2011,
+    "engine_cc": 3547,
+    "color": "Yellow",
+    "mileage": 142385,
+    "price": 358920.8
+  },
+  {
+    "vin": "69419120548239709",
+    "make": "Porsche",
+    "model": "Macan",
+    "year": 2022,
+    "engine_cc": 4367,
+    "color": "Green",
+    "mileage": 18182,
+    "price": 214134.08
+  },
+  {
+    "vin": "70130467826402709",
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2014,
+    "engine_cc": 2103,
+    "color": "Red",
+    "mileage": 50496,
+    "price": 46620.83
+  },
+  {
+    "vin": "28788415613432601",
+    "make": "Chevrolet",
+    "model": "Camaro",
+    "year": 2011,
+    "engine_cc": 2479,
+    "color": "Silver",
+    "mileage": 22534,
+    "price": 51208.22
+  },
+  {
+    "vin": "90117837112094585",
+    "make": "Hyundai",
+    "model": "Elantra",
+    "year": 2021,
+    "engine_cc": 2917,
+    "color": "Black",
+    "mileage": 117173,
+    "price": 21696.84
+  },
+  {
+    "vin": "83302693749642374",
+    "make": "BMW",
+    "model": "530i",
+    "year": 2014,
+    "engine_cc": 1778,
+    "color": "White",
+    "mileage": 37226,
+    "price": 40977.96
+  },
+  {
+    "vin": "45801498402954934",
+    "make": "Bugatti",
+    "model": "Chiron",
+    "year": 2021,
+    "engine_cc": 3680,
+    "color": "Yellow",
+    "mileage": 16389,
+    "price": 244205.72
+  },
+  {
+    "vin": "71716510563766302",
+    "make": "Aston Martin",
+    "model": "DBS Superleggera",
+    "year": 2011,
+    "engine_cc": 4766,
+    "color": "Yellow",
+    "mileage": 97007,
+    "price": 407435.35
+  },
+  {
+    "vin": "90710021803864733",
+    "make": "Kia",
+    "model": "Sportage",
+    "year": 2020,
+    "engine_cc": 6211,
+    "color": "Blue",
+    "mileage": 116591,
+    "price": 55721.82
+  },
+  {
+    "vin": "73479383111869537",
+    "make": "Hyundai",
+    "model": "Sonata",
+    "year": 2019,
+    "engine_cc": 5584,
+    "color": "Yellow",
+    "mileage": 42175,
+    "price": 31346.62
+  },
+  {
+    "vin": "40039708044491898",
+    "make": "Aston Martin",
+    "model": "Vantage",
+    "year": 2024,
+    "engine_cc": 1347,
+    "color": "Green",
+    "mileage": 95600,
+    "price": 245788.41
+  },
+  {
+    "vin": "77738671337583765",
+    "make": "Ferrari",
+    "model": "812 Superfast",
+    "year": 2017,
+    "engine_cc": 3140,
+    "color": "White",
+    "mileage": 115183,
+    "price": 147365.53
+  },
+  {
+    "vin": "36070347785740991",
+    "make": "Chevrolet",
+    "model": "Camaro",
+    "year": 2014,
+    "engine_cc": 3584,
+    "color": "Green",
+    "mileage": 100120,
+    "price": 39718.51
+  },
+  {
+    "vin": "23636861766560579",
+    "make": "Bentley",
+    "model": "Continental GT",
+    "year": 2013,
+    "engine_cc": 6184,
+    "color": "Silver",
+    "mileage": 54631,
+    "price": 130053.68
+  },
+  {
+    "vin": "58053586407096790",
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2015,
+    "engine_cc": 2359,
+    "color": "Silver",
+    "mileage": 144881,
+    "price": 28695.02
+  },
+  {
+    "vin": "86978337071265771",
+    "make": "Lamborghini",
+    "model": "Urus",
+    "year": 2015,
+    "engine_cc": 3910,
+    "color": "Red",
+    "mileage": 34907,
+    "price": 402702.19
+  },
+  {
+    "vin": "13032477389746407",
+    "make": "Bentley",
+    "model": "Continental GT",
+    "year": 2012,
+    "engine_cc": 5669,
+    "color": "Red",
+    "mileage": 88614,
+    "price": 245785.6
+  },
+  {
+    "vin": "73500290507085425",
+    "make": "Aston Martin",
+    "model": "Vantage",
+    "year": 2021,
+    "engine_cc": 2009,
+    "color": "Blue",
+    "mileage": 91985,
+    "price": 115969.04
+  },
+  {
+    "vin": "94660524970234799",
+    "make": "Ferrari",
+    "model": "F8 Tributo",
+    "year": 2019,
+    "engine_cc": 1352,
+    "color": "Yellow",
+    "mileage": 75226,
+    "price": 442720.75
+  },
+  {
+    "vin": "97920411201732632",
+    "make": "Toyota",
+    "model": "Prius",
+    "year": 2023,
+    "engine_cc": 1332,
+    "color": "White",
+    "mileage": 103485,
+    "price": 43901.63
+  },
+  {
+    "vin": "19732660459006962",
+    "make": "Porsche",
+    "model": "Panamera",
+    "year": 2019,
+    "engine_cc": 2439,
+    "color": "Black",
+    "mileage": 26698,
+    "price": 209140.4
+  },
+  {
+    "vin": "40295887407022437",
+    "make": "McLaren",
+    "model": "720S",
+    "year": 2018,
     "engine_cc": 1900,
     "color": "Black",
-    "mileage": 5000,
-    "price": 32000.00
+    "mileage": 63152,
+    "price": 114016.74
   },
   {
-    "vin": "1FTEW1CP5JFA12345",
-    "make": "Ford",
-    "model": "Mustang",
+    "vin": "60036365192920098",
+    "make": "Mercedes-Benz",
+    "model": "C-Class",
+    "year": 2015,
+    "engine_cc": 4812,
+    "color": "Green",
+    "mileage": 99387,
+    "price": 43365.18
+  },
+  {
+    "vin": "94628251512883940",
+    "make": "Mercedes-Benz",
+    "model": "S-Class",
     "year": 2018,
-    "engine_cc": 5000,
+    "engine_cc": 2615,
+    "color": "Silver",
+    "mileage": 57694,
+    "price": 32482.74
+  },
+  {
+    "vin": "11089608395452405",
+    "make": "Kia",
+    "model": "Stinger",
+    "year": 2017,
+    "engine_cc": 5038,
+    "color": "Silver",
+    "mileage": 94050,
+    "price": 48298.09
+  },
+  {
+    "vin": "41806110422025078",
+    "make": "Lamborghini",
+    "model": "Huracan",
+    "year": 2013,
+    "engine_cc": 1700,
+    "color": "Blue",
+    "mileage": 31614,
+    "price": 371131.36
+  },
+  {
+    "vin": "18576250844819031",
+    "make": "Hyundai",
+    "model": "Tucson",
+    "year": 2022,
+    "engine_cc": 5514,
+    "color": "Blue",
+    "mileage": 29231,
+    "price": 10538.34
+  },
+  {
+    "vin": "92717334621232100",
+    "make": "Nissan",
+    "model": "Rogue",
+    "year": 2015,
+    "engine_cc": 6155,
+    "color": "Silver",
+    "mileage": 29154,
+    "price": 16866.97
+  },
+  {
+    "vin": "87982180370850484",
+    "make": "Ford",
+    "model": "Escape",
+    "year": 2012,
+    "engine_cc": 5440,
+    "color": "Black",
+    "mileage": 66287,
+    "price": 29005.73
+  },
+  {
+    "vin": "71733358541827016",
+    "make": "Lamborghini",
+    "model": "Huracan",
+    "year": 2016,
+    "engine_cc": 5701,
+    "color": "Orange",
+    "mileage": 38128,
+    "price": 257331.93
+  },
+  {
+    "vin": "23604779482613118",
+    "make": "Audi",
+    "model": "Q5",
+    "year": 2010,
+    "engine_cc": 5234,
+    "color": "Blue",
+    "mileage": 104868,
+    "price": 50870.53
+  },
+  {
+    "vin": "63764007467748174",
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2018,
+    "engine_cc": 5142,
+    "color": "Black",
+    "mileage": 39333,
+    "price": 34114.9
+  },
+  {
+    "vin": "18642592669014704",
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2022,
+    "engine_cc": 2169,
+    "color": "Black",
+    "mileage": 70288,
+    "price": 13205.26
+  },
+  {
+    "vin": "89164031209852034",
+    "make": "Kia",
+    "model": "Sorento",
+    "year": 2013,
+    "engine_cc": 5013,
+    "color": "Blue",
+    "mileage": 28794,
+    "price": 30929.58
+  },
+  {
+    "vin": "65129629710511044",
+    "make": "Aston Martin",
+    "model": "DB11",
+    "year": 2014,
+    "engine_cc": 1873,
+    "color": "Blue",
+    "mileage": 98756,
+    "price": 195952.81
+  },
+  {
+    "vin": "54632084104243154",
+    "make": "Bentley",
+    "model": "Continental GT",
+    "year": 2019,
+    "engine_cc": 2690,
+    "color": "Gray",
+    "mileage": 125566,
+    "price": 294970.48
+  },
+  {
+    "vin": "48587627269254187",
+    "make": "Aston Martin",
+    "model": "DB11",
+    "year": 2011,
+    "engine_cc": 3045,
     "color": "Red",
-    "mileage": 45000,
-    "price": 35000.00
+    "mileage": 61908,
+    "price": 231654.9
+  },
+  {
+    "vin": "15200716924812743",
+    "make": "McLaren",
+    "model": "Artura",
+    "year": 2012,
+    "engine_cc": 5833,
+    "color": "Blue",
+    "mileage": 105525,
+    "price": 169637.31
+  },
+  {
+    "vin": "37255714841751914",
+    "make": "McLaren",
+    "model": "Artura",
+    "year": 2015,
+    "engine_cc": 1934,
+    "color": "White",
+    "mileage": 30259,
+    "price": 172641.74
+  },
+  {
+    "vin": "46615771529743474",
+    "make": "Audi",
+    "model": "Q5",
+    "year": 2022,
+    "engine_cc": 4269,
+    "color": "Green",
+    "mileage": 109407,
+    "price": 57584.73
+  },
+  {
+    "vin": "71251199791425120",
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2013,
+    "engine_cc": 6437,
+    "color": "Black",
+    "mileage": 145877,
+    "price": 22357.64
+  },
+  {
+    "vin": "60683405695798631",
+    "make": "Mercedes-Benz",
+    "model": "GLA",
+    "year": 2016,
+    "engine_cc": 3626,
+    "color": "Silver",
+    "mileage": 93756,
+    "price": 59502.5
+  },
+  {
+    "vin": "52291892609733128",
+    "make": "Lamborghini",
+    "model": "Aventador",
+    "year": 2023,
+    "engine_cc": 4991,
+    "color": "Yellow",
+    "mileage": 14640,
+    "price": 436149.37
+  },
+  {
+    "vin": "82496774619715095",
+    "make": "Ferrari",
+    "model": "812 Superfast",
+    "year": 2020,
+    "engine_cc": 4175,
+    "color": "Red",
+    "mileage": 89570,
+    "price": 131647.69
+  },
+  {
+    "vin": "35194291692893713",
+    "make": "Bentley",
+    "model": "Bentayga",
+    "year": 2015,
+    "engine_cc": 3317,
+    "color": "Red",
+    "mileage": 94701,
+    "price": 194624.89
+  },
+  {
+    "vin": "50986105775185632",
+    "make": "Nissan",
+    "model": "Sentra",
+    "year": 2017,
+    "engine_cc": 1657,
+    "color": "Yellow",
+    "mileage": 120070,
+    "price": 21245.0
+  },
+  {
+    "vin": "41291737261146209",
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2021,
+    "engine_cc": 4753,
+    "color": "Green",
+    "mileage": 20917,
+    "price": 55469.59
+  },
+  {
+    "vin": "84428805705373804",
+    "make": "BMW",
+    "model": "X5",
+    "year": 2014,
+    "engine_cc": 3031,
+    "color": "Red",
+    "mileage": 89885,
+    "price": 56236.12
+  },
+  {
+    "vin": "58344176564568983",
+    "make": "Hyundai",
+    "model": "Tucson",
+    "year": 2018,
+    "engine_cc": 3835,
+    "color": "Yellow",
+    "mileage": 54232,
+    "price": 20636.76
+  },
+  {
+    "vin": "11404686158537897",
+    "make": "Bentley",
+    "model": "Bentayga",
+    "year": 2011,
+    "engine_cc": 5855,
+    "color": "White",
+    "mileage": 147165,
+    "price": 215530.62
+  },
+  {
+    "vin": "96265804774377224",
+    "make": "Porsche",
+    "model": "911 Carrera",
+    "year": 2022,
+    "engine_cc": 6045,
+    "color": "Silver",
+    "mileage": 77960,
+    "price": 107937.58
+  },
+  {
+    "vin": "95715024925403949",
+    "make": "Aston Martin",
+    "model": "Vantage",
+    "year": 2015,
+    "engine_cc": 4211,
+    "color": "Green",
+    "mileage": 41483,
+    "price": 319691.23
+  },
+  {
+    "vin": "65269250089484098",
+    "make": "Audi",
+    "model": "Q5",
+    "year": 2016,
+    "engine_cc": 5549,
+    "color": "White",
+    "mileage": 146333,
+    "price": 32696.56
+  },
+  {
+    "vin": "86563858878188600",
+    "make": "Audi",
+    "model": "S4",
+    "year": 2013,
+    "engine_cc": 2401,
+    "color": "Green",
+    "mileage": 54458,
+    "price": 48110.02
+  },
+  {
+    "vin": "68604628052930474",
+    "make": "BMW",
+    "model": "530i",
+    "year": 2010,
+    "engine_cc": 2363,
+    "color": "Black",
+    "mileage": 77485,
+    "price": 51937.08
+  },
+  {
+    "vin": "54689177086145300",
+    "make": "McLaren",
+    "model": "720S",
+    "year": 2012,
+    "engine_cc": 3447,
+    "color": "White",
+    "mileage": 116550,
+    "price": 409076.52
+  },
+  {
+    "vin": "49746513176900592",
+    "make": "Chevrolet",
+    "model": "Camaro",
+    "year": 2023,
+    "engine_cc": 3583,
+    "color": "Green",
+    "mileage": 54281,
+    "price": 23144.29
+  },
+  {
+    "vin": "83834046797623045",
+    "make": "Lamborghini",
+    "model": "Urus",
+    "year": 2012,
+    "engine_cc": 2892,
+    "color": "Silver",
+    "mileage": 133073,
+    "price": 123293.54
+  },
+  {
+    "vin": "61718576238120581",
+    "make": "Bugatti",
+    "model": "Chiron",
+    "year": 2011,
+    "engine_cc": 5992,
+    "color": "Blue",
+    "mileage": 67474,
+    "price": 244169.61
+  },
+  {
+    "vin": "40644250172593371",
+    "make": "Hyundai",
+    "model": "Kona",
+    "year": 2015,
+    "engine_cc": 3989,
+    "color": "Green",
+    "mileage": 109860,
+    "price": 25939.73
+  },
+  {
+    "vin": "53683083799319823",
+    "make": "Lamborghini",
+    "model": "Urus",
+    "year": 2020,
+    "engine_cc": 1844,
+    "color": "Blue",
+    "mileage": 12786,
+    "price": 204858.08
+  },
+  {
+    "vin": "34327883486087127",
+    "make": "Lamborghini",
+    "model": "Huracan",
+    "year": 2010,
+    "engine_cc": 3123,
+    "color": "White",
+    "mileage": 65949,
+    "price": 476776.36
+  },
+  {
+    "vin": "89021488174819221",
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": 2024,
+    "engine_cc": 4515,
+    "color": "Gray",
+    "mileage": 20444,
+    "price": 30961.04
   }
 ]

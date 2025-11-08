@@ -1,21 +1,26 @@
-import { Pool } from "pg";
+// import { Pool } from "pg";
+
 import { car } from "../models/car_model";
 
-// Database connection configuration
-const dbConfig = {
-  host: process.env.POSTGRES_HOST || "localhost",
-  port: parseInt(process.env.POSTGRES_PORT || "5432"),
-  database: process.env.POSTGRES_DB || "appdb",
-  user: process.env.POSTGRES_USER || "app",
-  password: process.env.POSTGRES_PASSWORD || "app",
-  ssl:
-    process.env.NODE_ENV === "production"
-      ? { rejectUnauthorized: false }
-      : false,
+import { Pool, PoolConfig } from 'pg';
+
+const useSupabase = process.env.DB_PROVIDER === 'supabase';
+
+const localConfig: PoolConfig = {
+  host: process.env.POSTGRES_HOST ?? 'localhost',
+  port: Number(process.env.POSTGRES_PORT ?? 5432),
+  database: process.env.POSTGRES_DB ?? 'appdb',
+  user: process.env.POSTGRES_USER ?? 'app',
+  password: process.env.POSTGRES_PASSWORD ?? 'app',
 };
 
-// Create a connection pool
-const pool = new Pool(dbConfig);
+const supabaseConfig: PoolConfig = {
+  connectionString:
+    process.env.SUPABASE_DB_POOL_URL ?? `${process.env.SUPABASE_DB_URL}?sslmode=require`,
+  ssl: { rejectUnauthorized: false }, // required for Supabase
+};
+
+ const pool = new Pool(useSupabase ? supabaseConfig : localConfig);
 
 // Test database connection
 export const testConnection = async () => {

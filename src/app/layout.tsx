@@ -36,25 +36,25 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL('https://capsules.today'),
   title: {
-    default: "capsules.today",
-    template: "%s | capsules.today",
+    default: "Autowow",
+    template: "%s | Autowow",
   },
   description: "Record with intent. Time. moves. fast. Capsule your moments now.",
   twitter: {
-    title: 'Capsules - Your Story Matters',
+    title: 'Autowow - Search your next car',
     card: 'summary_large_image',
     images: [
       {
         url: '/assets/twitter-share.png',
         width: 1200,
         height: 522,
-        alt: 'Capsules - Record Future Memories',
+        alt: 'Autowow - Search your next car',
       },
     ],
   },
   openGraph: {
-    title: 'Capsules - Record Future Memories',
-    description: "Record with intent. Time. moves. fast. Capsule your moments now.",
+    title: 'CAutowow - Search your next car',
+    description: "Search. Scroll. Find your next car.",
     url: 'https://capsules.today',
     siteName: 'Capsules',
     locale: 'en_GB',
