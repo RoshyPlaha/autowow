@@ -76,8 +76,6 @@ export default function Home() {
           <RainbowText normalText="Autowow car" standoutText="search" />
         </div>
 
-        {isLoading && <div> Loading... </div>}
-
         {carResults.length > 0 && (
           <div className="container mx-auto p-4">
             <h2 className="text-2xl font-bold mb-4 text-center">
@@ -116,8 +114,21 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div className="pointer-events-none fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4">
-        <div className="pointer-events-auto w-full max-w-3xl rounded-3xl border border-white/60 bg-white/80 p-4 shadow-2xl backdrop-blur">
+      <div id="search-navigation" className="pointer-events-none fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4">
+        <div
+          id="search-navigation"
+          className="pointer-events-auto w-full max-w-3xl rounded-3xl border border-white/60 bg-white/80 p-4 shadow-2xl backdrop-blur transition-[background-position]"
+          style={
+            isLoading
+              ? {
+                  background:
+                    "linear-gradient(130deg, rgba(238,238,238,0.95) 35%, rgba(180, 192, 254, 0.95) 50%, rgba(238,238,238,0.95) 65%)",
+                  backgroundSize: "200% 100%",
+                  animation: "searchShimmer 1.2s ease-in-out infinite",
+                }
+              : undefined
+          }
+        >
           <textarea
             value={textInput}
             onChange={(e) => handleTextInputChange(e.target.value)}
@@ -184,6 +195,17 @@ export default function Home() {
         </div>
       </div>
       <Footer />
+
+      <style jsx>{`
+        @keyframes searchShimmer {
+          0% {
+            background-position: 200% 0;
+          }
+          100% {
+            background-position: -200% 0;
+          }
+        }
+      `}</style>
     </>
   );
 }
