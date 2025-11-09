@@ -10,8 +10,12 @@ CREATE TABLE cars (
   year INT NOT NULL,
   engine_cc INT,
   color TEXT,
-  mileage INT,
+  mileage INT, 
   price NUMERIC(12,2),
+  is_ulez TEXT,
+  seats INT,
+  fuel_type TEXT,
+  gearbox TEXT,
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
@@ -22,6 +26,10 @@ CREATE INDEX ON cars (engine_cc);
 CREATE INDEX ON cars (color);
 CREATE INDEX ON cars (price);
 CREATE INDEX ON cars (mileage);
+CREATE INDEX ON cars (is_ulez);
+CREATE INDEX ON cars (seats);
+CREATE INDEX ON cars (fuel_type);
+CREATE INDEX ON cars (gearbox);
 
 -- Optional: Create a function to automatically update the created_at timestamp
 CREATE OR REPLACE FUNCTION update_created_at_column()
@@ -49,21 +57,12 @@ BEGIN
     
     -- Only seed if table is empty
     IF car_count = 0 THEN
-        -- Insert sample vehicles
-        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price) VALUES
-        ('1HGBH41JXMN109186', 'Honda', 'Civic', 2021, 1500, 'Silver', 25000, 22000.00),
-        ('1FTFW1ET5DFC12345', 'Ford', 'F-150', 2020, 3500, 'Blue', 45000, 35000.00),
-        ('WBAFR9C5XDC123456', 'BMW', '3 Series', 2019, 2000, 'Black', 38000, 28000.00),
-        ('1N4AL3AP8EC123789', 'Nissan', 'Altima', 2022, 2500, 'White', 15000, 26000.00),
-        ('1J4RR4GG2BC123456', 'Jeep', 'Grand Cherokee', 2021, 3600, 'Red', 32000, 42000.00),
-        ('5NPE34AF4HH123456', 'Hyundai', 'Elantra', 2020, 2000, 'Gray', 28000, 18000.00),
-        ('1FMCU9HD6KUA12345', 'Ford', 'Explorer', 2019, 3000, 'Black', 55000, 29000.00),
-        ('2HGFC2F59MH123456', 'Honda', 'Accord', 2021, 1800, 'White', 22000, 24000.00),
-        ('1G1ZD5ST6JF123456', 'Chevrolet', 'Malibu', 2018, 1600, 'Silver', 67000, 16000.00),
-        ('KMHD35LH3HU123456', 'Kia', 'Sorento', 2017, 2700, 'Blue', 78000, 19000.00),
-        ('1HGCM82633A123456', 'Honda', 'CR-V', 2023, 1900, 'Black', 5000, 32000.00),
-        ('1FTEW1CP5JFA12345', 'Ford', 'Mustang', 2018, 5000, 'Red', 45000, 35000.00);
-        
+        -- Insert vehicles from JSON data
+        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price, is_ulez, seats, fuel_type, gearbox) VALUES ('76956096820444666', 'Aston Martin', 'DB11', 2017, 4.6, 'Silver', 51582, 443911, 'yes', 5, 'hybrid', 'automatic');
+        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price, is_ulez, seats, fuel_type, gearbox) VALUES ('43569636699382753', 'Bugatti', 'Chiron', 2011, 4.7, 'Blue', 122443, 112429, 'no', 4, 'diesel', 'automatic');
+        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price, is_ulez, seats, fuel_type, gearbox) VALUES ('61315621963985630', 'Lamborghini', 'Huracan', 2015, 5.8, 'Silver', 94358, 162349, 'no', 2, 'electric', 'manual');
+        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price, is_ulez, seats, fuel_type, gearbox) VALUES ('21043662563615187', 'Porsche', '911', 2018, 3.0, 'Gray', 105421, 123999, 'yes', 2, 'petrol', 'manual');
+        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price, is_ulez, seats, fuel_type, gearbox) VALUES ('58280856223044440', 'BMW', 'M3', 2017, 1671, 'Orange', 105629, 55847.63, 'yes', 5, 'petrol', 'manual');
         RAISE NOTICE 'Seeded database with % vehicles', 12;
     ELSE
         RAISE NOTICE 'Database already contains % vehicles, skipping seed', car_count;

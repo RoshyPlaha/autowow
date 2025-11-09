@@ -79,6 +79,8 @@ export const carQueries = {
     color?: string[] | null;
     mileagemin?: number;
     mileagemax?: number;
+    gearbox?: string;
+    fuelType?: string;
   }): Promise<car[]> {
     let query = "SELECT * FROM cars WHERE 1=1";
     const values: any[] = [];
@@ -148,12 +150,23 @@ export const carQueries = {
       paramIndex++;
     }
 
+    if (filters.gearbox) {
+      query += ` AND gearbox = $${paramIndex}`;
+      values.push(filters.gearbox);
+      paramIndex++;
+    }
+
+    if (filters.fuelType) {
+      query += ` AND fuel_type = $${paramIndex}`;
+      values.push(filters.fuelType);
+      paramIndex++;
+    }
+
     query += " ORDER BY created_at DESC";
 
     console.log("Query:", query, values);
 
     const result = await pool.query(query, values);
-    // console.log("Result:", result.rows);
     return result.rows;
   },
 };

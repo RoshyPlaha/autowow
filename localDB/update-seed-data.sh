@@ -21,10 +21,7 @@ if command -v jq &> /dev/null; then
     echo "    -- Get count of existing cars" >> seed-from-json.sql
     echo "    SELECT COUNT(*) INTO car_count FROM cars;" >> seed-from-json.sql
     echo "    " >> seed-from-json.sql
-    echo "    -- Only seed if table is empty" >> seed-from-json.sql
-    echo "    IF car_count = 0 THEN" >> seed-from-json.sql
-    echo "        -- Insert vehicles from JSON data" >> seed-from-json.sql
-    
+
     # Process each vehicle in the JSON file
     jq_filter="
       def sql_str(s):
@@ -38,7 +35,7 @@ if command -v jq &> /dev/null; then
         end;
 
       .[] |
-        \"        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price) VALUES (\" +
+        \"        INSERT INTO cars (vin, make, model, year, engine_cc, color, mileage, price, is_ulez, seats, fuel_type, gearbox) VALUES (\" +
         sql_str(.vin) + \", \" +
         sql_str(.make) + \", \" +
         sql_str(.model) + \", \" +
@@ -46,16 +43,17 @@ if command -v jq &> /dev/null; then
         sql_num(.engine_cc) + \", \" +
         sql_str(.color) + \", \" +
         sql_num(.mileage) + \", \" +
-        sql_num(.price) + \");\"
+        sql_num(.price) + \", \" +
+        sql_str(.is_ulez) + \", \" +
+        sql_num(.seats) + \", \" +
+        sql_str(.fuel_type) + \", \" +
+        sql_str(.gearbox) + \");\"
     "
 
     jq -r "$jq_filter" vehicles.json >> seed-from-json.sql
     
     echo "" >> seed-from-json.sql
     echo "        RAISE NOTICE 'Successfully seeded database with vehicles from JSON data';" >> seed-from-json.sql
-    echo "    ELSE" >> seed-from-json.sql
-    echo "        RAISE NOTICE 'Database already contains % vehicles, skipping seed', car_count;" >> seed-from-json.sql
-    echo "    END IF;" >> seed-from-json.sql
     echo "END \$\$;" >> seed-from-json.sql
     
     echo "✅ Generated seed-from-json.sql from vehicles.json"

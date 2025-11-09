@@ -8,5 +8,7 @@ export interface car {
   color?: string[];
   mileage: {}
   price?: number;
+  gearbox?: string;
+  fuel_type?: string;
   created_at?: Date;
 }

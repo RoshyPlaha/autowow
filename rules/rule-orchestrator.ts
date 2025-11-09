@@ -3,12 +3,16 @@ import { MILEAGE_RULES } from "./mileage-rules";
 import { PRICING_RULES } from "./pricing-rules";
 import { COLOR_RULES } from "./color-rules";
 import { YEAR_RULES } from "./year-rules";
+import { GEARBOX_RULES } from "./gearbox-rules";
+import { FUEL_TYPE_RULES } from "./fueltype-rules";
 
 export const INCLUDE_MILEAGE: string = "INCLUDE_MILEAGE";
 export const INCLUDE_PRICING: string = "INCLUDE_PRICING";
 export const INCLUDE_COLOR: string = "INCLUDE_COLOR";
 export const INCLUDE_YEAR: string = "INCLUDE_YEAR";
 export const INCLUDE_CORE: string = "INCLUDE_CORE";
+export const INCLUDE_GEARBOX: string = "INCLUDE_GEARBOX";
+export const INCLUDE_FUEL_TYPE: string = "INCLUDE_FUEL_TYPE";
 
 export interface RuleConfig {
   includeCore: boolean;
@@ -50,6 +54,10 @@ export const getSpecificRule = (rule: string): string => {
       return YEAR_RULES;
     case INCLUDE_CORE:
       return CORE_RULES;
+    case INCLUDE_GEARBOX:
+      return GEARBOX_RULES;
+    case INCLUDE_FUEL_TYPE:
+      return FUEL_TYPE_RULES;
     default:
       return "";
   }

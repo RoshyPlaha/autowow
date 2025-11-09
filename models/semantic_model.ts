@@ -10,4 +10,6 @@ export interface SemanticCarModel {
   mileagemax?: number;
   minPrice?: number;
   maxPrice?: number;
+  gearbox?: string;
+  fuelType?: string;
 }

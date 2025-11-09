@@ -1,26 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
+import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { RainbowText } from "@/components/ui/rainbow-text";
 
-interface Car {
-  id?: number;
-  vin?: string;
-  make: string;
-  model: string;
-  year: number;
-  engine_cc?: number;
-  color?: string;
-  mileage?: number;
-  price?: number;
-  created_at?: Date;
-}
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
-  const [carResults, setCarResults] = useState<Car[]>([]);
+  const [carResults, setCarResults] = useState<car[]>([]);
   const [textInput, setTextInput] = useState("");
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
   const isSearchDisabled = useMemo(
@@ -82,7 +69,7 @@ export default function Home() {
               Search Results ({carResults.length} cars)
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {carResults.map((car: Car) => (
+              {carResults.map((car: car) => (
                 <div
                   key={car.id}
                   className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"
@@ -98,23 +85,24 @@ export default function Home() {
                     Mileage: {car.mileage?.toLocaleString()} miles
                   </div>
                   <div className="text-sm text-gray-600">
-                    Engine: {car.engine_cc}cc
+                    Gearbox: {car.gearbox}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    Fuel Type: {car.fuel_type}
                   </div>
                   <div className="text-lg font-bold text-green-600 mt-2">
                     £{car.price?.toLocaleString()}
                   </div>
-                  {car.vin && (
-                    <div className="text-xs text-gray-400 mt-1">
-                      VIN: {car.vin}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
           </div>
         )}
       </div>
-      <div id="search-navigation" className="pointer-events-none fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4">
+      <div
+        id="search-navigation"
+        className="pointer-events-none fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4"
+      >
         <div
           id="search-navigation"
           className="pointer-events-auto w-full max-w-3xl rounded-3xl border border-white/60 bg-white/80 p-4 shadow-2xl backdrop-blur transition-[background-position]"

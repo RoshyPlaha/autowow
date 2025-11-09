@@ -4,22 +4,17 @@ import { SemanticCarModel } from "models/semantic_model";
 import { carQueries } from "../../utils/postgres";
 import { extractSemanticModel } from "service/semantic-extractor";
 
-type ResponseData = {
-  cars: car[];
-};
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
+  res: NextApiResponse<{ cars: car[] }>
 ) {
   try {
     console.log("Request body:", req.body);
     
     const semtantic_car_model: SemanticCarModel = await extractSemanticModel(req.body.message);
-
-    console.log("Semtantic car model:", semtantic_car_model);
     const rows = await carQueries.getByFilters(semtantic_car_model);
 
+    console.log("rows", rows[0]);
     return res.status(200).json({ cars: rows || [] });
   } catch (error) {
     console.error("DB error:", error);

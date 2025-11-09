@@ -1,0 +1,18 @@
+Synthetic data prompt:
+
+generate me some json data in the format for 100 cars. They should include supercars and normal cars
+
+{
+    "vin": "75552495545379651",
+    "make": manufacturer name e.g. bmw
+    "model": model name e.g. 328
+    "year": in format YYYY
+    "engine_cc": in format 2.8 and a number!
+    "color": e.g. blue
+    "mileage": a number e.g. 13292
+    "price": a number e.g. 27503
+"is_ulez": can be yes or now
+"seats": a number e.g. 5
+"fuel_type": either electric, petrol, diesel or hybrid
+"gearbox": either manual or automatic
+  },

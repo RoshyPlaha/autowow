@@ -123,7 +123,7 @@ export const extractYear = async (
 
 Text: "${message}"
 
-Return ONLY a JSON object like: {"minYear": 2020, "maxYear": 2025} or null
+Return ONLY a JSON object like: {"minYear": x, "maxYear": x} or null
 
 Rules:
 ${rules}
@@ -148,4 +148,58 @@ export const extractMakeModel = async (
   rules: string
 ): Promise<{ make: string; model: string } | null> => {
   return null;
+};
+
+export const extractGearbox = async (
+  message: string,
+  rules: string
+): Promise<{ gearbox: string } | null> => {
+  const prompt = `You are a JSON-only response system. Extract ONLY gearbox in the format from the text in the format {"gearbox": x} where x will be replaced based on the rules provided.
+
+  Text: "${message}"
+  
+  Return ONLY a JSON object like: {"gearbox": x} or null
+  
+  Rules:
+  ${rules}
+  
+  Do not extract any other information - only gearbox if mentioned.`;
+
+  const result = await extractLLMResponse(prompt);
+
+  try {
+    const parsed = JSON.parse(result.text);
+    console.log("the gearbox result is: ", parsed);
+    return parsed && (parsed.gearbox) ? parsed : null;
+  } catch (error) {
+    console.error("Failed to parse year extraction:", result.text);
+    return null;
+  }
+};
+
+export const extractFuelType = async (
+  message: string,
+  rules: string
+): Promise<{ fuelType: string } | null> => {
+  const prompt = `You are a JSON-only response system. Extract ONLY fueltype in the format from the text in the format {"fuelType": x} where x will be replaced based on the rules provided.
+
+  Text: "${message}"
+  
+  Return ONLY a JSON object like: {"fuelType": x} or null
+  
+  Rules:
+  ${rules}
+  
+  Do not extract any other information - only fueltype if mentioned.`;
+
+  const result = await extractLLMResponse(prompt);
+
+  try {
+    const parsed = JSON.parse(result.text);
+    console.log("the fuelType result is: ", parsed);
+    return parsed && parsed.fuelType ? parsed : null;
+  } catch (error) {
+    console.error("Failed to parse fueltype extraction:", result.text);
+    return null;
+  }
 };
