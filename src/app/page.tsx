@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
-import { RainbowButton } from "@/components/ui/rainbow-button";
+import { useMemo, useState } from "react";
 
 import { Footer } from "@/components/layout/footer";
 import { RainbowText } from "@/components/ui/rainbow-text";
@@ -24,12 +22,14 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [carResults, setCarResults] = useState<Car[]>([]);
   const [textInput, setTextInput] = useState("");
-  const [showSearchButton, setShowSearchButton] = useState(false);
-
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const isSearchDisabled = useMemo(
+    () => textInput.trim().length === 0 || isLoading,
+    [textInput, isLoading]
+  );
 
   const handleTextInputChange = (value: string) => {
     setTextInput(value);
-    setShowSearchButton(value.length > 0);
   };
 
   const handleSendMessage = async () => {
@@ -37,6 +37,16 @@ export default function Home() {
     setIsLoading(true);
 
     try {
+      const trimmedInput = textInput.trim();
+
+      if (trimmedInput.length > 0) {
+        setSearchHistory((prev) => {
+          const nextHistory = prev.filter((entry) => entry !== trimmedInput);
+          nextHistory.unshift(trimmedInput);
+          return nextHistory.slice(0, 10);
+        });
+      }
+
       const response = await fetch("/api/search-cars", {
         method: "POST",
         headers: {
@@ -60,30 +70,11 @@ export default function Home() {
     <>
       <div
         id="top"
-        className="relative min-h-screen w-full bg-[#fafafa] overflow-hidden flex flex-col"
+        className="relative min-h-screen w-full bg-[#fbfbfb] overflow-hidden flex flex-col pb-48"
       >
         <div className="flex flex-col items-center justify-center text-center font-merriweather py-12">
           <RainbowText normalText="Autowow car" standoutText="search" />
         </div>
-
-        <div className="flex flex-col items-center justify-center text-center font-merriweather py-12 px-12">
-          <textarea
-            value={textInput}
-            onChange={(e) => handleTextInputChange(e.target.value)}
-            placeholder="Type your car specification here...we'll handle the rest"
-            className="w-full resize-none border border-gray-300 rounded-2xl px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            rows={1}
-          />
-        </div>
-
-        {showSearchButton && (
-          <div className="flex-1 items-center justify-center text-center">
-            <RainbowButton onClick={handleSendMessage}>
-              {" "}
-              Search Cars{" "}
-            </RainbowButton>
-          </div>
-        )}
 
         {isLoading && <div> Loading... </div>}
 
@@ -124,6 +115,73 @@ export default function Home() {
             </div>
           </div>
         )}
+      </div>
+      <div className="pointer-events-none fixed bottom-4 left-0 right-0 z-50 flex justify-center px-4">
+        <div className="pointer-events-auto w-full max-w-3xl rounded-3xl border border-white/60 bg-white/80 p-4 shadow-2xl backdrop-blur">
+          <textarea
+            value={textInput}
+            onChange={(e) => handleTextInputChange(e.target.value)}
+            placeholder="Type your car specification here...we'll handle the rest"
+            className="w-full resize-none rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            rows={2}
+          />
+          <div className="search-history mt-3 flex items-center justify-between gap-3">
+            <div className="flex flex-1 gap-2 overflow-hidden">
+              <div className="w-full max-h-24 overflow-y-auto rounded-2xl border border-gray-200 bg-white/90 p-2 text-left text-xs text-gray-600">
+                <div className="mb-1 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wide text-gray-400">
+                  <span>Search history</span>
+                  {searchHistory.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchHistory([])}
+                      className="text-[10px] font-normal uppercase text-blue-500 hover:text-blue-600"
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
+                <div className="flex flex-col gap-1">
+                  {searchHistory.map((entry, index) => (
+                    <button
+                      key={`${entry}-${index}`}
+                      onClick={() => setTextInput(entry)}
+                      className="w-full truncate rounded-xl px-3 py-1 text-left transition hover:bg-blue-50 hover:text-blue-700"
+                      type="button"
+                    >
+                      {entry}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <button
+                onClick={handleSendMessage}
+                disabled={isSearchDisabled}
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-400 disabled:opacity-60"
+                aria-label="Search cars"
+              >
+                {isLoading ? (
+                  <span className="animate-pulse text-sm">...</span>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-6 w-6"
+                  >
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
