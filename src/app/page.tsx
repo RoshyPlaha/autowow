@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { RainbowText } from "@/components/ui/rainbow-text";
+import { DisplayExamplePrompt } from "@/components/display-example-prompt/display-example-prompt";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -62,6 +63,11 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center text-center font-merriweather py-12">
           <RainbowText normalText="Autowow car" standoutText="search" />
         </div>
+        <div className="mx-auto mb-6 max-w-fit rounded-full border border-blue-100 bg-blue-50 px-5 py-2 text-sm font-medium text-blue-700 shadow-sm text-center">
+          Autowow is a beta product. Results are constantly improving. Send feedback to roshsplaha@gmail.com
+        </div>
+
+        {carResults.length === 0 && <DisplayExamplePrompt />}
 
         {carResults.length > 0 && (
           <div className="container mx-auto p-4">
