@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { Merriweather } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next"
 
 const merriweather = Merriweather({
   weight: ['300', '400', '700', '900'],
@@ -80,9 +80,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geist.variable} ${geistMono.variable} ${merriweather.variable} antialiased`}>
         {children}
-
-        <GoogleTagManager gtmId="G-VW2R6DDC6T" />
-
+        <Analytics />
         <Toaster />
       </body>
     </html>
