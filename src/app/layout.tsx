@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'CAutowow - Search your next car',
+    title: 'Autowow - Search your next car',
     description: "Search. Scroll. Find your next car.",
     url: 'https://autowow.vercel.app/',
     siteName: 'Autowow',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/assets/twitter-share.png',
+        url: '/assets/opengraph.png',
         width: 1200,
         height: 522,
         alt: 'Autowow - Find your next car',
