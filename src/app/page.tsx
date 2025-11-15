@@ -79,7 +79,7 @@ export default function Home() {
             Find the exact car you&apos;re looking for in seconds
           </h1>
         </div>
-        <div className="mx-auto mb-6 max-w-fit rounded-full border border-blue-100 bg-green-50 px-5 py-2 text-sm font-medium text-green-700 shadow-sm text-center">
+        <div className="mx-auto mb-6 max-w-fit rounded-full border border-green-100 bg-green-50 px-5 py-2 text-sm font-medium text-green-700 shadow-sm text-center">
           This is a beta product. Send feedback to roshsplaha@gmail.com
         </div>
 
@@ -87,7 +87,7 @@ export default function Home() {
 
         {carResults.length > 0 && (
           <div className="container mx-auto p-4">
-            <h2 className="text-2xl font-bold mb-4 text-center">
+            <h2 className="text-2xl font-bold mb-4 text-center bg-white/50 border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 font-merriweather">
               Search Results ({carResults.length} cars)
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -143,7 +143,7 @@ export default function Home() {
             isLoading
               ? {
                   background:
-                    "linear-gradient(130deg, rgba(238,238,238,0.95) 35%, rgba(180, 192, 254, 0.95) 50%, rgba(238,238,238,0.95) 65%)",
+                    "linear-gradient(130deg, rgba(238,238,238,0.95) 35%, rgba(123, 156, 130, 0.95) 50%, rgba(238,238,238,0.95) 65%)",
                   backgroundSize: "200% 100%",
                   animation: "searchShimmer 1.2s ease-in-out infinite",
                 }
@@ -177,7 +177,7 @@ export default function Home() {
                     <button
                       key={`${entry}-${index}`}
                       onClick={() => setTextInput(entry)}
-                      className="w-full truncate rounded-xl px-3 py-1 text-left transition hover:bg-blue-50 hover:text-blue-700"
+                      className="w-full truncate rounded-xl px-3 py-1 text-left transition hover:bg-green-50 hover:text-green-700"
                       type="button"
                     >
                       {entry}
