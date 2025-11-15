@@ -56,7 +56,7 @@ export const DisplayExamplePrompt = () => {
       <div className="mt-4 inline-flex max-w-xl items-center gap-2 px-4 py-2 text-sm">
         <span className="font-mono text-green-700 bg-green-50 px-2 py-1 rounded-md shadow-sm">
           {displayedPrompt}
-          <span className="typing-cursor ml-1 inline-block w-1 bg-blue-900" />
+          <span className="typing-cursor ml-1 inline-block w-1 bg-green-900" />
         </span>
       </div>
     </div>

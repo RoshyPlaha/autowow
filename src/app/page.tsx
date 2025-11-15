@@ -5,6 +5,14 @@ import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { DisplayExamplePrompt } from "@/components/display-example-prompt/display-example-prompt";
 import { Header } from "@/components/layout/header";
+
+const formatPrice = (price: number | undefined): string => {
+  if (!price) return "";
+  return Math.round(price).toLocaleString("en-GB", {
+    maximumFractionDigits: 0,
+  });
+};
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [carResults, setCarResults] = useState<car[]>([]);
@@ -86,7 +94,7 @@ export default function Home() {
               {carResults.map((car: car) => (
                 <div
                   key={car.id}
-                  className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4"
+                  className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 bg-white/50 backdrop-blur-sm"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="text-lg font-semibold">
@@ -108,7 +116,7 @@ export default function Home() {
                       Fuel Type: {car.fuel_type}
                     </div>
                     <div className="text-lg font-bold text-green-600 mt-2">
-                      £{car.price?.toLocaleString()}
+                      £{formatPrice(car.price)}
                     </div>
                   </div>
                   <div className="flex-shrink-0 w-36 h-36 rounded-lg overflow-hidden flex items-center justify-center">
