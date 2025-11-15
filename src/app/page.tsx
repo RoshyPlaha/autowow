@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
-import { RainbowText } from "@/components/ui/rainbow-text";
 import { DisplayExamplePrompt } from "@/components/display-example-prompt/display-example-prompt";
 import { Header } from "@/components/layout/header";
 export default function Home() {
@@ -69,7 +68,7 @@ export default function Home() {
       >
         <div className="flex flex-col items-center justify-center text-center font-merriweather py-12">
           <h1 className="text-2xl md:text-4xl font-bold font-merriweather">
-            Find the exact car you're looking for in seconds
+            Find the exact car you&apos;re looking for in seconds
           </h1>
         </div>
         <div className="mx-auto mb-6 max-w-fit rounded-full border border-blue-100 bg-green-50 px-5 py-2 text-sm font-medium text-green-700 shadow-sm text-center">
