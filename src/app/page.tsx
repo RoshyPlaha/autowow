@@ -5,7 +5,7 @@ import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { RainbowText } from "@/components/ui/rainbow-text";
 import { DisplayExamplePrompt } from "@/components/display-example-prompt/display-example-prompt";
-
+import { Header } from "@/components/layout/header";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [carResults, setCarResults] = useState<car[]>([]);
@@ -56,15 +56,24 @@ export default function Home() {
 
   return (
     <>
+      <Header />
+      <div
+        className="fixed right-0 top-0 h-full w-3/4 sm:w-2/3 md:w-2/5 lg:w-1/3 bg-contain bg-right bg-no-repeat z-0 pointer-events-none"
+        style={{
+          backgroundImage: "url('/assets/car-background.png')",
+        }}
+      />
       <div
         id="top"
-        className="relative min-h-screen w-full bg-[#fbfbfb] overflow-hidden flex flex-col pb-48"
+        className="relative min-h-screen w-full overflow-hidden flex flex-col pb-48 px-4 md:px-6 lg:px-8 z-10"
       >
         <div className="flex flex-col items-center justify-center text-center font-merriweather py-12">
-          <RainbowText normalText="Autowow car" standoutText="search" />
+          <h1 className="text-2xl md:text-4xl font-bold font-merriweather">
+            Find the exact car you're looking for in seconds
+          </h1>
         </div>
-        <div className="mx-auto mb-6 max-w-fit rounded-full border border-blue-100 bg-blue-50 px-5 py-2 text-sm font-medium text-blue-700 shadow-sm text-center">
-          Autowow is a beta product. Results are constantly improving. Send feedback to roshsplaha@gmail.com
+        <div className="mx-auto mb-6 max-w-fit rounded-full border border-blue-100 bg-green-50 px-5 py-2 text-sm font-medium text-green-700 shadow-sm text-center">
+          This is a beta product. Send feedback to roshsplaha@gmail.com
         </div>
 
         {carResults.length === 0 && <DisplayExamplePrompt />}
@@ -78,26 +87,37 @@ export default function Home() {
               {carResults.map((car: car) => (
                 <div
                   key={car.id}
-                  className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow"
+                  className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4"
                 >
-                  <div className="text-lg font-semibold">
-                    {car.make} {car.model}
+                  <div className="flex-1 min-w-0">
+                    <div className="text-lg font-semibold">
+                      {car.make} {car.model}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Year: {car.year}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Color: {car.color}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Mileage: {car.mileage?.toLocaleString()} miles
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Gearbox: {car.gearbox}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      Fuel Type: {car.fuel_type}
+                    </div>
+                    <div className="text-lg font-bold text-green-600 mt-2">
+                      £{car.price?.toLocaleString()}
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-600">Year: {car.year}</div>
-                  <div className="text-sm text-gray-600">
-                    Color: {car.color}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Mileage: {car.mileage?.toLocaleString()} miles
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Gearbox: {car.gearbox}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Fuel Type: {car.fuel_type}
-                  </div>
-                  <div className="text-lg font-bold text-green-600 mt-2">
-                    £{car.price?.toLocaleString()}
+                  <div className="flex-shrink-0 w-36 h-36 rounded-lg overflow-hidden flex items-center justify-center">
+                    <img
+                      src="/assets/Default-Car.png"
+                      alt={`${car.make} ${car.model}`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
               ))}
@@ -127,7 +147,7 @@ export default function Home() {
             value={textInput}
             onChange={(e) => handleTextInputChange(e.target.value)}
             placeholder="Type your car specification here...we'll handle the rest"
-            className="w-full resize-none rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full resize-none rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2"
             rows={2}
           />
           <div className="search-history mt-3 flex items-center justify-between gap-3">
@@ -139,7 +159,7 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => setSearchHistory([])}
-                      className="text-[10px] font-normal uppercase text-blue-500 hover:text-blue-600"
+                      className="text-[10px] font-normal uppercase text-green-500 hover:text-green-600"
                     >
                       Clear
                     </button>
@@ -163,7 +183,7 @@ export default function Home() {
               <button
                 onClick={handleSendMessage}
                 disabled={isSearchDisabled}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-400 disabled:opacity-60"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-[#122614] text-white shadow-lg transition hover:bg-[#122614] disabled:cursor-not-allowed disabled:bg-[#122614]  disabled:opacity-60"
                 aria-label="Search cars"
               >
                 {isLoading ? (

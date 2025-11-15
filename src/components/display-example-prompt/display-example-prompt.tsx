@@ -54,7 +54,7 @@ export const DisplayExamplePrompt = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center font-merriweather py-12">
       <div className="mt-4 inline-flex max-w-xl items-center gap-2 px-4 py-2 text-sm">
-        <span className="font-mono text-blue-700">
+        <span className="font-mono text-green-700 bg-green-50 px-2 py-1 rounded-md shadow-sm">
           {displayedPrompt}
           <span className="typing-cursor ml-1 inline-block w-1 bg-blue-900" />
         </span>
