@@ -18,6 +18,7 @@ export default function Home() {
   const [carResults, setCarResults] = useState<car[]>([]);
   const [textInput, setTextInput] = useState("");
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const isSearchDisabled = useMemo(
     () => textInput.trim().length === 0 || isLoading,
     [textInput, isLoading]
@@ -50,8 +51,18 @@ export default function Home() {
         body: JSON.stringify({ message: textInput }),
       });
 
+      if (response.status === 204) {
+        console.warn("no cars found for query: ", textInput);
+        setErrorMessage(
+          "No cars found for your query. Please contact support at roshsplaha@gmail.com"
+        );
+        setIsLoading(false);
+        return;
+      }
+
       const data = await response.json();
       console.log("data", data);
+      setErrorMessage("");
       setCarResults(data.cars || []); // Extract the cars array from the response
     } catch (error) {
       console.error("Error fetching cars:", error);
@@ -82,6 +93,12 @@ export default function Home() {
         <div className="mx-auto mb-6 max-w-fit rounded-full border border-green-100 bg-green-50 px-5 py-2 text-sm font-medium text-green-700 shadow-sm text-center">
           This is a beta product. Send feedback to roshsplaha@gmail.com
         </div>
+
+        {errorMessage && (
+          <div className="mx-auto mb-6 max-w-fit rounded-full border border-red-100 bg-red-50 px-5 py-2 text-sm font-medium text-red-700 shadow-sm text-center">
+            {errorMessage}
+          </div>
+        )}
 
         {carResults.length === 0 && <DisplayExamplePrompt />}
 

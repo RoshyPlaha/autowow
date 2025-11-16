@@ -10,11 +10,17 @@ export default async function handler(
 ) {
   try {
     console.log("Request body:", req.body);
-    
-    const semtantic_car_model: SemanticCarModel = await extractSemanticModel(req.body.message);
+
+    const semtantic_car_model: SemanticCarModel = await extractSemanticModel(
+      req.body.message
+    );
     const rows = await carQueries.getByFilters(semtantic_car_model);
 
-    console.log("rows", rows[0]);
+    if (rows.length === 0) {
+      console.warn("no rows found for query: ", req.body.message);
+      return res.status(204).json({ cars: [] });
+    }
+
     return res.status(200).json({ cars: rows || [] });
   } catch (error) {
     console.error("DB error:", error);
