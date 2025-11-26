@@ -307,7 +307,7 @@ export default function Home() {
               rows={2}
             />
             {textInput.length === 0 && displayedPrompt && (
-              <div className="absolute inset-0 flex items-center px-4 py-3 pointer-events-none text-gray-400 z-0">
+              <div className="absolute inset-0 flex items-center px-4 py-3 pointer-events-none text-black z-0">
                 <span>
                   {displayedPrompt}
                   <span className="typing-cursor ml-1 inline-block w-0.5 h-4 bg-gray-400 align-middle" />
