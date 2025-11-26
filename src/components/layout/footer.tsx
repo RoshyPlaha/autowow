@@ -27,7 +27,7 @@ export const Footer = ({
           <div className="flex items-center justify-center md:justify-start">
             <Image
               src={`/assets/logos/${brandName}.png`}
-              alt="Capsules"
+              alt="logo"
               width={150}
               height={150}
               className="object-contain"

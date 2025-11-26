@@ -179,6 +179,16 @@ export default function Home() {
       console.log("data", data);
       setErrorMessage("");
       setCarResults(data.cars || []); // Extract the cars array from the response
+
+      // Scroll to top when results are shown
+      if (data.cars && data.cars.length > 0) {
+        const topElement = document.getElementById("header-container");
+        if (topElement) {
+          topElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
     } catch (error) {
       console.error("Error fetching cars:", error);
       setCarResults([]);

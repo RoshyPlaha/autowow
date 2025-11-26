@@ -55,7 +55,7 @@ export const Header = ({ brandName, primaryColor }: { brandName: string, primary
   };
 
   return (
-    <div 
+    <div id="header-container"
       className="w-full h-28 flex items-center px-16 relative z-50 text-white"
       style={{
         backgroundColor: hexToRgba(primaryColor, 0.5),
