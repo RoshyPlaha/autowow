@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -32,6 +32,7 @@ export default function Home() {
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
   const [displayedPrompt, setDisplayedPrompt] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const isSearchDisabled = useMemo(
     () => textInput.trim().length === 0 || isLoading,
@@ -84,6 +85,60 @@ export default function Home() {
     textInput,
   ]);
 
+  const videoUrl =
+    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4";
+
+  // Handle video autoplay on mobile
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const playVideo = async () => {
+      try {
+        video.muted = true;
+        video.playsInline = true;
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+      } catch (error) {
+        // Autoplay was prevented, try again on user interaction
+        console.log("Autoplay prevented, will retry on interaction: ", error);
+
+        const handleInteraction = async () => {
+          try {
+            await video.play();
+            document.removeEventListener("touchstart", handleInteraction);
+            document.removeEventListener("click", handleInteraction);
+          } catch (e) {
+            console.log("Play failed:", e);
+          }
+        };
+
+        document.addEventListener("touchstart", handleInteraction, {
+          once: true,
+        });
+        document.addEventListener("click", handleInteraction, { once: true });
+      }
+    };
+
+    // Try to play when video is loaded
+    if (video.readyState >= 2) {
+      playVideo();
+    } else {
+      video.addEventListener("loadeddata", playVideo, { once: true });
+    }
+
+    // Also try on canplay event
+    video.addEventListener("canplay", playVideo, { once: true });
+
+    return () => {
+      video.removeEventListener("loadeddata", playVideo);
+      video.removeEventListener("canplay", playVideo);
+    };
+  }, [videoUrl]);
+
   const handleTextInputChange = (value: string) => {
     setTextInput(value);
   };
@@ -132,18 +187,18 @@ export default function Home() {
     }
   };
 
-  const videoUrl = process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4";
-
   return (
     <>
       <Header brandName="bellcolvill" primaryColor={primaryColor} />
       {videoUrl ? (
         <video
+          ref={videoRef}
           className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none"
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
         >
           <source src={videoUrl} type="video/mp4" />
         </video>
@@ -240,7 +295,7 @@ export default function Home() {
             <textarea
               value={textInput}
               onChange={(e) => handleTextInputChange(e.target.value)}
-              className="w-full resize-none rounded-2xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-transparent relative z-10"
+              className="w-full resize-none rounded-2xl border border-gray-200 text-black px-4 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-transparent relative z-10"
               rows={2}
             />
             {textInput.length === 0 && displayedPrompt && (
