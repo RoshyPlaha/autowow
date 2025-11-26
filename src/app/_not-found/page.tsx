@@ -5,13 +5,16 @@ import Meteors from "@/components/ui/meteors";
 import { RainbowText } from "@/components/ui/rainbow-text";
 import Link from "next/link";
 
+const COMPANY_NAME = "Autoro";
+const primaryColor = "#122614";
+
 export default function PageNotFound() {
   return (
     <div
       id="top"
       className="relative min-h-screen w-full bg-[#fafafa] overflow-hidden"
     >
-      <Header />
+      <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
       <Meteors number={20} />
       <div className="flex flex-col md:flex-row min-h-screen pt-20 md:pt-0 px-4 space-y-4 md:space-y-0 md:space-x-4">
         <div className="max-w-1xl mx-auto text-center px-8 py-6 leading-relaxed">

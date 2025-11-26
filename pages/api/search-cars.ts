@@ -9,6 +9,7 @@ export default async function handler(
   res: NextApiResponse<{ cars: car[] }>
 ) {
   try {
+    console.log("brandName", req.body.brandName);
     console.log("Request body:", req.body);
 
     const semtantic_car_model: SemanticCarModel = await extractSemanticModel(
