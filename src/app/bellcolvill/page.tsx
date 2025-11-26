@@ -132,8 +132,7 @@ export default function Home() {
     }
   };
 
-  const videoUrl =
-    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4";
+  const videoUrl = process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4";
 
   return (
     <>

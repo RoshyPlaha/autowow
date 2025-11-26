@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { AUTH_STATUS_CHANGED } from "@/lib/auth-events";
 import Image from "next/image";
 
-export const Header = () => {
+export const Header = ({ brandName, primaryColor }: { brandName: string, primaryColor: string }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -46,14 +46,27 @@ export const Header = () => {
     };
   }, [isLoggedIn]); // Add isLoggedIn to dependencies
 
+  // Convert hex to rgba with 50% opacity
+  const hexToRgba = (hex: string, alpha: number) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
+
   return (
-    <div className="w-full h-16 flex items-center px-8 relative z-50 bg-[#122614] text-white">
+    <div 
+      className="w-full h-28 flex items-center px-16 relative z-50 text-white"
+      style={{
+        backgroundColor: hexToRgba(primaryColor, 0.5),
+      }}
+    >
       <nav className="flex gap-4">
         <Image
-          src="/assets/autowow-logo.png"
-          alt="Autowow"
-          width={100}
-          height={100}
+          src={`/assets/logos/${brandName}.png`}
+          alt="Autoro"
+          width={300}
+          height={300}
         />
       </nav>
     </div>
