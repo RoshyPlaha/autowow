@@ -5,11 +5,10 @@ import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
-import BouncingCube from "@/components/bouncingcube/bouncingCube";
 
-const COMPANY_NAME = "Bell & Colvill";
-const BLOBNAME = "BellColvill";
-const primaryColor = "#012056";
+const COMPANY_NAME = "AR";
+const BLOBNAME = "AutoRo";
+const primaryColor = "#b4b4b4";
 
 const examplePrompts = [
   "show me all petrol manual cars from before 2017 and less than 20,000 miles",
@@ -86,6 +85,60 @@ export default function Home() {
     textInput,
   ]);
 
+  const videoUrl =
+    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4";
+
+  // Handle video autoplay on mobile
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const playVideo = async () => {
+      try {
+        video.muted = true;
+        video.playsInline = true;
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+      } catch (error) {
+        // Autoplay was prevented, try again on user interaction
+        console.log("Autoplay prevented, will retry on interaction: ", error);
+
+        const handleInteraction = async () => {
+          try {
+            await video.play();
+            document.removeEventListener("touchstart", handleInteraction);
+            document.removeEventListener("click", handleInteraction);
+          } catch (e) {
+            console.log("Play failed:", e);
+          }
+        };
+
+        document.addEventListener("touchstart", handleInteraction, {
+          once: true,
+        });
+        document.addEventListener("click", handleInteraction, { once: true });
+      }
+    };
+
+    // Try to play when video is loaded
+    if (video.readyState >= 2) {
+      playVideo();
+    } else {
+      video.addEventListener("loadeddata", playVideo, { once: true });
+    }
+
+    // Also try on canplay event
+    video.addEventListener("canplay", playVideo, { once: true });
+
+    return () => {
+      video.removeEventListener("loadeddata", playVideo);
+      video.removeEventListener("canplay", playVideo);
+    };
+  }, [videoUrl]);
+
   const handleTextInputChange = (value: string) => {
     setTextInput(value);
   };
@@ -146,24 +199,40 @@ export default function Home() {
 
   return (
     <>
-      <Header brandName="bellcolvill" primaryColor={primaryColor} />
-
-      <div className="relative">
-        <BouncingCube />
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 mx-auto max-w-fit rounded-full border border-green-100 bg-green-50 px-5 py-2 text-sm font-medium text-green-700 shadow-sm text-center">
-          This is a beta product. Send feedback to roshsplaha@gmail.com
-        </div>
-      </div>
-
+      <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      {videoUrl ? (
+        <video
+          ref={videoRef}
+          className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      ) : (
+        <div
+          className="fixed right-0 top-0 h-full w-3/4 sm:w-2/3 md:w-2/5 lg:w-1/3 bg-contain bg-right bg-no-repeat z-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/assets/car-background.png')",
+          }}
+        />
+      )}
       <div
         id="top"
         className="relative min-h-screen w-full overflow-hidden flex flex-col pb-48 px-4 md:px-6 lg:px-8 z-10"
       >
         <div className="flex flex-col items-center justify-center text-center font-merriweather py-12">
           <h1 className="text-2xl md:text-4xl font-bold font-merriweather text-white">
-            Find your next Lotus in seconds
+            Find your next car in seconds
           </h1>
         </div>
+
+        <p className="text-center text-white">
+          This is a beta product. Send feedback to roshsplaha@gmail.com
+        </p>
 
         {errorMessage && (
           <div className="mx-auto mb-6 max-w-fit rounded-full border border-red-100 bg-red-50 px-5 py-2 text-sm font-medium text-red-700 shadow-sm text-center">
@@ -310,7 +379,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer brandName="bellcolvill" primaryColor={primaryColor} />
+      <Footer brandName={COMPANY_NAME} primaryColor={primaryColor} />
 
       <style jsx>{`
         @keyframes searchShimmer {
