@@ -5,6 +5,7 @@ import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
+import BouncingCube from "@/components/bouncingcube/bouncingCube";
 
 const COMPANY_NAME = "Bell & Colvill";
 const BLOBNAME = "BellColvill";
@@ -85,58 +86,6 @@ export default function Home() {
     textInput,
   ]);
 
-  const videoUrl =
-    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4";
-
-  // Handle video autoplay on mobile
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const playVideo = async () => {
-      try {
-        video.muted = true;
-        video.playsInline = true;
-        const playPromise = video.play();
-        
-        if (playPromise !== undefined) {
-          await playPromise;
-        }
-      } catch (error) {
-        // Autoplay was prevented, try again on user interaction
-        console.log("Autoplay prevented, will retry on interaction: ", error);
-        
-        const handleInteraction = async () => {
-          try {
-            await video.play();
-            document.removeEventListener("touchstart", handleInteraction);
-            document.removeEventListener("click", handleInteraction);
-          } catch (e) {
-            console.log("Play failed:", e);
-          }
-        };
-        
-        document.addEventListener("touchstart", handleInteraction, { once: true });
-        document.addEventListener("click", handleInteraction, { once: true });
-      }
-    };
-
-    // Try to play when video is loaded
-    if (video.readyState >= 2) {
-      playVideo();
-    } else {
-      video.addEventListener("loadeddata", playVideo, { once: true });
-    }
-
-    // Also try on canplay event
-    video.addEventListener("canplay", playVideo, { once: true });
-
-    return () => {
-      video.removeEventListener("loadeddata", playVideo);
-      video.removeEventListener("canplay", playVideo);
-    };
-  }, [videoUrl]);
-
   const handleTextInputChange = (value: string) => {
     setTextInput(value);
   };
@@ -177,7 +126,7 @@ export default function Home() {
       console.log("data", data);
       setErrorMessage("");
       setCarResults(data.cars || []); // Extract the cars array from the response
-      
+
       // Scroll to top when results are shown
       if (data.cars && data.cars.length > 0) {
         const topElement = document.getElementById("header-container");
@@ -198,26 +147,14 @@ export default function Home() {
   return (
     <>
       <Header brandName="bellcolvill" primaryColor={primaryColor} />
-      {videoUrl ? (
-        <video
-          ref={videoRef}
-          className="fixed inset-0 w-full h-full object-cover z-0 pointer-events-none"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        >
-          <source src={videoUrl} type="video/mp4" />
-        </video>
-      ) : (
-        <div
-          className="fixed right-0 top-0 h-full w-3/4 sm:w-2/3 md:w-2/5 lg:w-1/3 bg-contain bg-right bg-no-repeat z-0 pointer-events-none"
-          style={{
-            backgroundImage: "url('/assets/car-background.png')",
-          }}
-        />
-      )}
+
+      <div className="relative">
+        <BouncingCube />
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 mx-auto max-w-fit rounded-full border border-green-100 bg-green-50 px-5 py-2 text-sm font-medium text-green-700 shadow-sm text-center">
+          This is a beta product. Send feedback to roshsplaha@gmail.com
+        </div>
+      </div>
+
       <div
         id="top"
         className="relative min-h-screen w-full overflow-hidden flex flex-col pb-48 px-4 md:px-6 lg:px-8 z-10"

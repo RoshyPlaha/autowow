@@ -98,14 +98,14 @@ export default function Home() {
         video.muted = true;
         video.playsInline = true;
         const playPromise = video.play();
-
+        
         if (playPromise !== undefined) {
           await playPromise;
         }
       } catch (error) {
         // Autoplay was prevented, try again on user interaction
         console.log("Autoplay prevented, will retry on interaction: ", error);
-
+        
         const handleInteraction = async () => {
           try {
             await video.play();
@@ -115,10 +115,8 @@ export default function Home() {
             console.log("Play failed:", e);
           }
         };
-
-        document.addEventListener("touchstart", handleInteraction, {
-          once: true,
-        });
+        
+        document.addEventListener("touchstart", handleInteraction, { once: true });
         document.addEventListener("click", handleInteraction, { once: true });
       }
     };
@@ -179,7 +177,7 @@ export default function Home() {
       console.log("data", data);
       setErrorMessage("");
       setCarResults(data.cars || []); // Extract the cars array from the response
-
+      
       // Scroll to top when results are shown
       if (data.cars && data.cars.length > 0) {
         const topElement = document.getElementById("header-container");
@@ -309,7 +307,7 @@ export default function Home() {
               rows={2}
             />
             {textInput.length === 0 && displayedPrompt && (
-              <div className="absolute inset-0 flex items-center px-4 py-3 pointer-events-none text-gray-400 z-0">
+              <div className="absolute inset-0 flex items-center px-4 py-3 pointer-events-none text-black z-0">
                 <span>
                   {displayedPrompt}
                   <span className="typing-cursor ml-1 inline-block w-0.5 h-4 bg-gray-400 align-middle" />
