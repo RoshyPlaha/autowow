@@ -3,8 +3,15 @@ import { useState, useEffect } from "react";
 import { AUTH_STATUS_CHANGED } from "@/lib/auth-events";
 import Image from "next/image";
 
-export const Header = ({ brandName, primaryColor }: { brandName: string, primaryColor: string }) => {
+export const Header = ({
+  brandName,
+  primaryColor,
+}: {
+  brandName: string;
+  primaryColor: string;
+}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Initial check
@@ -55,8 +62,9 @@ export const Header = ({ brandName, primaryColor }: { brandName: string, primary
   };
 
   return (
-    <div id="header-container"
-      className="w-full h-28 flex items-center px-16 relative z-50 text-white"
+    <div
+      id="header-container"
+      className="w-full h-28 flex items-center justify-between px-4 md:px-16 relative z-50 text-white"
       style={{
         backgroundColor: hexToRgba(primaryColor, 0.5),
       }}
@@ -67,8 +75,104 @@ export const Header = ({ brandName, primaryColor }: { brandName: string, primary
           alt="Autoro"
           width={300}
           height={300}
+          className="w-auto h-12 md:h-auto"
         />
       </nav>
+
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex items-center gap-6">
+        <button
+          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
+          onClick={() => console.log("Full Stock List")}
+        >
+          Full Stock List
+        </button>
+        <button
+          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
+          onClick={() => console.log("About Us clicked")}
+        >
+          About Us
+        </button>
+        <button
+          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
+          onClick={() => console.log("Contact Us clicked")}
+        >
+          Contact Us
+        </button>
+        <button
+          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
+          onClick={() => console.log("Finance clicked")}
+        >
+          Finance
+        </button>
+      </nav>
+
+      {/* Mobile Burger Menu Button */}
+      <button
+        className="md:hidden flex flex-col gap-1.5 p-2"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span
+          className={`w-6 h-0.5 bg-white transition-all ${
+            isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
+          }`}
+        />
+        <span
+          className={`w-6 h-0.5 bg-white transition-all ${
+            isMobileMenuOpen ? "opacity-0" : ""
+          }`}
+        />
+        <span
+          className={`w-6 h-0.5 bg-white transition-all ${
+            isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
+          }`}
+        />
+      </button>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg md:hidden">
+          <nav className="flex flex-col py-4">
+            <button
+              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                console.log("Full Stock List");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Full Stock List
+            </button>
+            <button
+              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                console.log("About Us clicked");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              About Us
+            </button>
+            <button
+              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                console.log("Contact Us clicked");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Contact Us
+            </button>
+            <button
+              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                console.log("Finance clicked");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Finance
+            </button>
+          </nav>
+        </div>
+      )}
     </div>
   );
 };
