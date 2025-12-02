@@ -6,9 +6,10 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
 
-const COMPANY_NAME = "Bell & Colvill";
-const BLOBNAME = "BellColvill";
-const primaryColor = "#012056";
+const COMPANY_NAME = "Auto2000";
+const COMPANY_SHORT_NAME = "Auto Prestige";
+const BLOBNAME = "suv";
+const primaryColor = "#fdfbfb";
 
 const examplePrompts = [
   "show me all petrol manual cars from before 2017 and less than 20,000 miles",
@@ -199,7 +200,7 @@ export default function Home() {
 
   return (
     <>
-      <Header brandName="bellcolvill" primaryColor={primaryColor} />
+      <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
       {videoUrl ? (
         <video
           ref={videoRef}
@@ -226,9 +227,13 @@ export default function Home() {
       >
         <div className="flex flex-col items-center justify-center text-center font-merriweather py-12">
           <h1 className="text-2xl md:text-4xl font-bold font-merriweather text-white">
-            Find your next Lotus in seconds
+            Find your next car in seconds with {COMPANY_SHORT_NAME}
           </h1>
         </div>
+
+        <p className="text-center text-white">
+          This is a beta product. Send feedback to roshsplaha@gmail.com
+        </p>
 
         {errorMessage && (
           <div className="mx-auto mb-6 max-w-fit rounded-full border border-red-100 bg-red-50 px-5 py-2 text-sm font-medium text-red-700 shadow-sm text-center">
@@ -375,7 +380,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer brandName="bellcolvill" primaryColor={primaryColor} />
+      <Footer brandName={COMPANY_NAME} primaryColor={primaryColor} />
 
       <style jsx>{`
         @keyframes searchShimmer {
