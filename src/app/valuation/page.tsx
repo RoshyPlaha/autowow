@@ -1,20 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
-const ValuationPage = ({
-  searchParams,
-}: {
-  searchParams: {
-    brandName: string;
-    primaryColor: string;
-  };
-}) => {
+type estimatedValueProp = {
+  estimatedValue: string,
+  message: string,
+}
+
+const ValuationPageContent = () => {
+  const searchParams = useSearchParams();
   const [registration, setRegistration] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [valuationResult, setValuationResult] = useState<any>(null);
+  const [valuationResult, setValuationResult] = useState<estimatedValueProp>({
+    estimatedValue: "",
+    message: "",
+  });
 
   const handleValuation = async () => {
     if (!registration.trim()) return;
@@ -44,8 +47,8 @@ const ValuationPage = ({
     }
   };
 
-  const brandName = searchParams?.brandName || "AR";
-  const primaryColor = searchParams?.primaryColor || "#b4b4b4";
+  const brandName = searchParams?.get("brandName") || "AR";
+  const primaryColor = searchParams?.get("primaryColor") || "#b4b4b4";
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -123,6 +126,18 @@ const ValuationPage = ({
 
       <Footer brandName={brandName} primaryColor={primaryColor} />
     </div>
+  );
+};
+
+const ValuationPage = () => {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-lg">Loading...</div>
+      </div>
+    }>
+      <ValuationPageContent />
+    </Suspense>
   );
 };
 

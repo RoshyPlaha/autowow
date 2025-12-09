@@ -2,10 +2,10 @@
   "name": "autowow",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/fix-validator-paths.js",
+    "postbuild": "node scripts/fix-validator-paths.js",
     "start": "next start",
     "lint": "next lint",
     "test:email": "NODE_OPTIONS='--loader ts-node/esm' ts-node --project tsconfig.json scripts/test-email.ts",

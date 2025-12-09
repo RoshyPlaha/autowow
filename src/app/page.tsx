@@ -89,7 +89,7 @@ export default function Home() {
           {/* Left Side - Dashboard */}
           <div className="w-full order-2 lg:order-1 bg-white text-center align-center justify-center items-center">
             <Link
-              href={`/auto2000`}
+              href={`/bellcolvill`}
               className="px-6 py-3 text-left text-white bg-green-900 transition-colors inline-block"
             >
               Demo Here

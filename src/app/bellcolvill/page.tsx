@@ -5,6 +5,7 @@ import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const COMPANY_NAME = "Bell & Colvill";
 const BLOBNAME = "BellColvill";
@@ -271,7 +272,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex-shrink-0 w-36 h-36 rounded-lg overflow-hidden flex items-center justify-center">
-                    <img
+                    <Image
                       src="/assets/Default-Car.png"
                       alt={`${car.make} ${car.model}`}
                       className="w-full h-full object-cover"

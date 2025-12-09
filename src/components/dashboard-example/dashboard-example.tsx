@@ -9,8 +9,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
+  Tooltip
 } from "recharts";
 
 export default function Dashboard() {
