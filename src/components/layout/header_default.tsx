@@ -67,51 +67,34 @@ export const Header = ({
       id="header-container"
       className="w-full h-28 flex items-center justify-between px-4 md:px-16 relative z-50 text-white"
       style={{
-        backgroundColor: hexToRgba(primaryColor, 0.5),
+        backgroundColor: hexToRgba(primaryColor, 1),
       }}
     >
       <nav className="flex gap-4">
         <Image
           src={`/assets/logos/${brandName}.png`}
           alt="Autoro"
-          width={300}
-          height={300}
+          width={180}
+          height={180}
           className="w-auto h-12 md:h-auto"
         />
       </nav>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-6">
-        <Link
-          href={`/`}
-          className="px-6 py-3 text-left text-white-100transition-coƒlors"
-        >
-          Home
-        </Link>
-        <button
-          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
-          onClick={() => console.log("Full Stock List")}
-        >
-          Dummy Button 1
-        </button>
-        <button
-          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
-          onClick={() => console.log("About Us clicked")}
-        >
-          Dummy Button 2
-        </button>
         <button
           className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
           onClick={() => console.log("Contact Us clicked")}
         >
-          Dummy Button 3
+          Contact: +44 7718215606
         </button>
         <Link
-          href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
+          href={`/auto2000`}
           className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
         >
-          Free Car Valuation
+          Demo Here
         </Link>
+       
       </nav>
 
       {/* Mobile Burger Menu Button */}
@@ -141,12 +124,15 @@ export const Header = ({
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg md:hidden">
           <nav className="flex flex-col py-4">
-            <Link
-              href={`/`}
-              className="px-6 py-3 text-left text-white-100transition-coƒlors"
+            <button
+              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                console.log("Full Stock List");
+                setIsMobileMenuOpen(false);
+              }}
             >
-              Home
-            </Link>
+              Full Stock List
+            </button>
             <button
               className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
               onClick={() => {
@@ -154,7 +140,25 @@ export const Header = ({
                 setIsMobileMenuOpen(false);
               }}
             >
-              Dummy Button 1
+              About Us
+            </button>
+            <button
+              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                console.log("Contact Us clicked");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Contact Us
+            </button>
+            <button
+              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
+              onClick={() => {
+                console.log("Finance clicked");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Finance
             </button>
             <Link
               href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
