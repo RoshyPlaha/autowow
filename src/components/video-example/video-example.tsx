@@ -12,10 +12,6 @@ const VideoExample = () => {
         >
           <source
             src="https://uyxjzyhjh8n5b67n.public.blob.vercel-storage.com/defaultvideo.mov"
-            type="video/quicktime"
-          />
-          <source
-            src="https://uyxjzyhjh8n5b67n.public.blob.vercel-storage.com/defaultvideo.mov"
             type="video/mp4"
           />
           Your browser does not support the video tag.

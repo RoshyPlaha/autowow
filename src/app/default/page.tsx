@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const COMPANY_NAME = "Default";
-const BLOBNAME = "BellColvill";
-const primaryColor = "#012056";
+const BLOBNAME = "NoVideo";
+const primaryColor = "#FFFFFF";
 
 const examplePrompts = [
   "show me all petrol manual cars from before 2017 and less than 20,000 miles",
@@ -217,7 +217,7 @@ export default function Home() {
         <div
           className="fixed right-0 top-0 h-full w-3/4 sm:w-2/3 md:w-2/5 lg:w-1/3 bg-contain bg-right bg-no-repeat z-0 pointer-events-none"
           style={{
-            backgroundImage: "url('/assets/car-background.png')",
+            background: "#FFFFFF",
           }}
         />
       )}

@@ -62,6 +62,15 @@ export const Header = ({
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };
 
+  // Scroll to features section
+  const scrollToElement = (elementId: string) => {
+    const featuresElement = document.getElementById(elementId);
+    if (featuresElement) {
+      featuresElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div
       id="header-container"
@@ -88,13 +97,30 @@ export const Header = ({
         >
           Contact: +44 7718215606
         </button>
+        <button
+          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
+          onClick={() => scrollToElement("packages")}
+        >
+          Packages
+        </button>
+        <button
+          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
+          onClick={() => scrollToElement("about")}
+        >
+          About Us
+        </button>
+        <button
+          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
+          onClick={() => console.log("Contact Us clicked")}
+        >
+          Blog
+        </button>
         <Link
-          href={`/auto2000`}
+          href={`/vortex`}
           className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
         >
-          Demo Here
+          See a Demo Here
         </Link>
-       
       </nav>
 
       {/* Mobile Burger Menu Button */}
@@ -135,10 +161,7 @@ export const Header = ({
             </button>
             <button
               className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
-              onClick={() => {
-                console.log("About Us clicked");
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => scrollToElement("about")}
             >
               About Us
             </button>
@@ -153,19 +176,10 @@ export const Header = ({
             </button>
             <button
               className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
-              onClick={() => {
-                console.log("Finance clicked");
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => scrollToElement("packages")}
             >
-              Finance
+              Packages
             </button>
-            <Link
-              href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
-              className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
-            >
-              Free Car Valuation
-            </Link>
           </nav>
         </div>
       )}
