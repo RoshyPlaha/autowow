@@ -80,13 +80,15 @@ export const Header = ({
       }}
     >
       <nav className="flex gap-4">
-        <Image
-          src={`/assets/logos/${brandName}.png`}
-          alt="Autoro"
-          width={180}
-          height={180}
-          className="w-auto h-12 md:h-auto"
-        />
+        <Link href={`/`}>
+          <Image
+            src={`/assets/logos/${brandName}.png`}
+            alt="Autoro"
+            width={180}
+            height={180}
+            className="w-auto h-12 md:h-auto"
+          />
+        </Link>
       </nav>
 
       {/* Desktop Navigation */}
@@ -111,7 +113,7 @@ export const Header = ({
         </button>
         <Link
           href={`/blog`}
-          className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
+          className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Blog
         </Link>

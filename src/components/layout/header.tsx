@@ -71,13 +71,15 @@ export const Header = ({
       }}
     >
       <nav className="flex gap-4">
-        <Image
-          src={`/assets/logos/${brandName}.png`}
-          alt="Autoro"
-          width={300}
-          height={300}
-          className="w-auto h-12 md:h-auto"
-        />
+        <Link href={`/`}>
+          <Image
+            src={`/assets/logos/${brandName}.png`}
+            alt="Autoro"
+            width={300}
+            height={300}
+            className="w-auto h-12 md:h-auto"
+          />
+        </Link>
       </nav>
 
       {/* Desktop Navigation */}
