@@ -109,12 +109,12 @@ export const Header = ({
         >
           About Us
         </button>
-        <button
-          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
-          onClick={() => console.log("Contact Us clicked")}
+        <Link
+          href={`/blog`}
+          className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
         >
           Blog
-        </button>
+        </Link>
         <Link
           href={`/vortex`}
           className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
@@ -150,15 +150,12 @@ export const Header = ({
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg md:hidden">
           <nav className="flex flex-col py-4">
-            <button
-              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
-              onClick={() => {
-                console.log("Full Stock List");
-                setIsMobileMenuOpen(false);
-              }}
+            <Link
+              href={`/blog`}
+              className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
             >
-              Full Stock List
-            </button>
+              Blog
+            </Link>
             <button
               className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
               onClick={() => scrollToElement("about")}
