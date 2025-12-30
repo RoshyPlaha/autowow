@@ -1,7 +1,7 @@
 import { Footer } from "@/components/layout/footer_default";
 import { Header } from "@/components/layout/header_default";
 import { getAllBlogThumbnails } from "@/lib/get-blogs";
-import Image from "next/image";
+import BlogMainImage from "@/components/blog/blog-main-image";
 import Link from "next/link";
 
 const COMPANY_NAME = "AR";
@@ -27,11 +27,8 @@ export default async function BlogIndex() {
                 {/* Image Container with Date Banner */}
                 <div className="relative w-full h-64 md:h-80 overflow-hidden">
                   {post.image && (
-                    <Image
+                    <BlogMainImage
                       src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
                     />
                   )}
                   {/* Date Banner - Overlapping top-right */}

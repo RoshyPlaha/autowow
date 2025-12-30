@@ -5,6 +5,8 @@ import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/get-blogs";
 import { Header } from "@/components/layout/header_default";
 import { Footer } from "@/components/layout/footer_default";
 import Image from "next/image";
+import CodeSnippet from "@/components/blog/code-snippet";
+import BlogMainImage from "@/components/blog/blog-main-image";
 
 const COMPANY_NAME = "AR";
 const primaryColor = "#09293c";
@@ -63,11 +65,35 @@ const markdownComponents = {
       {children}
     </blockquote>
   ),
-  code: ({ children }: { children: React.ReactNode }) => (
-    <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono">
-      {children}
-    </code>
-  ),
+  code: ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+  }) => {
+    // Check if this is a code block (has className with language) or inline code
+    const match = /language-(\w+)/.exec(className || "");
+    const language = match ? match[1] : undefined;
+    const isInline = !className;
+
+    if (isInline) {
+      return (
+        <code className="bg-gray-100 px-2 py-1 rounded text-sm font-mono">
+          {children}
+        </code>
+      );
+    }
+
+    // For code blocks, use CodeSnippet component
+    return (
+      <CodeSnippet language={language}>
+        {String(children).replace(/\n$/, "")}
+      </CodeSnippet>
+    );
+  },
   img: ({
     src,
     alt,
@@ -75,18 +101,25 @@ const markdownComponents = {
     src?: string;
     alt?: string;
   }) => {
-    if (src) {
-      return (
-        <Image
-          src={src}
-          alt={alt || ""}
-          width={800}
-          height={450}
-          className="rounded-lg my-4"
-        />
-      );
+    if (!src) return null;
+    
+    // Check if this is a main image (alt text contains "main-image" or starts with "main:")
+    const isMainImage = alt?.toLowerCase().includes("main-image") || alt?.toLowerCase().startsWith("main:");
+    
+    if (isMainImage) {
+      return <BlogMainImage src={src} alt={alt || "Blog main image"} />;
     }
-    return null;
+    
+    // Regular images
+    return (
+      <Image
+        src={src}
+        alt={alt || ""}
+        width={800}
+        height={450}
+        className="rounded-lg my-4"
+      />
+    );
   },
 };
 
