@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import TransitionLink from "../page-animation/transition-link";
@@ -100,18 +99,18 @@ const Nav = () => {
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg md:hidden">
           <nav className="flex flex-col py-4">
-            <Link
+            <TransitionLink
               href={`/blog`}
               className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
             >
               Blog
-            </Link>
-            <Link
+            </TransitionLink>
+            <TransitionLink
               href={`/vortex`}
               className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
             >
               Demo
-            </Link>
+            </TransitionLink>
             <button
               className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
               onClick={() => scrollToElement("about")}

@@ -244,15 +244,15 @@ export default function Home() {
 
         {carResults.length > 0 && (
           <div className="container mx-auto p-4">
-            <h2 className="text-2xl font-bold mb-4 text-center bg-white/50 border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 font-merriweather">
-              Search Results ({carResults.length} cars)
+            <h2 className="text-2xl font-bold text-white mb-4 text-center p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 font-merriweather">
+              There are {carResults.length} cars found for your search
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {carResults.map((car: car) => (
-                <NavigationLink key={car.id} href={`/car_detail?id=${car.id}`}>
+                <NavigationLink key={car.id} href={`/car_detail?id=${car.id}&brandName=${COMPANY_NAME}&primaryColor=${primaryColor}`}>
                   <div
                     key={car.id}
-                    className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 bg-white/50 backdrop-blur-sm text-white"
+                    className="p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 bg-white/90 backdrop-blur-sm text-white"
                   >
                     <div className="flex-1 min-w-0 text-black">
                       <div className="text-lg font-semibold text-black">
@@ -277,13 +277,13 @@ export default function Home() {
                         £{formatPrice(car.price)}
                       </div>
                     </div>
-                    <div className="flex-shrink-0 w-36 h-36 rounded-lg overflow-hidden flex items-center justify-center">
+                    <div className="flex-shrink-0 w-36 h-36 overflow-hidden flex items-center justify-center">
                       <Image
                         width={100}
                         height={100}
-                        src="/assets/Default-Car.png"
+                        src="/assets/car_default_2.png"
                         alt={`${car.make} ${car.model}`}
-                        className="w-full h-full object-cover"
+                        className=""
                       />
                     </div>
                   </div>
