@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { AUTH_STATUS_CHANGED } from "@/lib/auth-events";
 import Image from "next/image";
-import Link from "next/link";
+import NavigationLink from "../page-animation/transition-link";
 
 export const Header = ({
   brandName,
@@ -71,7 +71,7 @@ export const Header = ({
       }}
     >
       <nav className="flex gap-4">
-        <Link href={`/`}>
+        <NavigationLink href={`/`}>
           <Image
             src={`/assets/logos/${brandName}.png`}
             alt="Autoro"
@@ -79,41 +79,41 @@ export const Header = ({
             height={300}
             className="w-auto h-12 md:h-auto"
           />
-        </Link>
+        </NavigationLink>
       </nav>
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-6">
-        <Link
+        <NavigationLink
           href={`/`}
           className="px-6 py-3 text-left text-white-100transition-coƒlors"
         >
           Home
-        </Link>
-        <button
-          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
-          onClick={() => console.log("Full Stock List")}
+        </NavigationLink>
+        <NavigationLink
+          href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
+          className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Dummy Button 1
-        </button>
-        <button
-          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
-          onClick={() => console.log("About Us clicked")}
+        </NavigationLink>
+        <NavigationLink
+          href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
+          className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Dummy Button 2
-        </button>
-        <button
-          className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
-          onClick={() => console.log("Contact Us clicked")}
+        </NavigationLink>
+        <NavigationLink
+          href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
+          className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Dummy Button 3
-        </button>
-        <Link
+        </NavigationLink>
+        <NavigationLink
           href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
-          className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
+          className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Free Car Valuation
-        </Link>
+        </NavigationLink>
       </nav>
 
       {/* Mobile Burger Menu Button */}
@@ -143,12 +143,12 @@ export const Header = ({
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg md:hidden">
           <nav className="flex flex-col py-4">
-            <Link
+            <NavigationLink
               href={`/`}
               className="px-6 py-3 text-left text-white-100transition-coƒlors"
             >
               Home
-            </Link>
+            </NavigationLink>
             <button
               className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
               onClick={() => {
@@ -158,12 +158,12 @@ export const Header = ({
             >
               Dummy Button 1
             </button>
-            <Link
+            <NavigationLink
               href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
               className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
             >
               Free Car Valuation
-            </Link>
+            </NavigationLink>
           </nav>
         </div>
       )}

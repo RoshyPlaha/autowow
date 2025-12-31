@@ -5,6 +5,7 @@ import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
+import NavigationLink from "@/components/page-animation/transition-link";
 import Image from "next/image";
 
 const COMPANY_NAME = "vortex";
@@ -248,41 +249,45 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {carResults.map((car: car) => (
-                <div
-                  key={car.id}
-                  className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 bg-white/50 backdrop-blur-sm text-white"
-                >
-                  <div className="flex-1 min-w-0 text-black">
-                    <div className="text-lg font-semibold text-black">
-                      {car.make} {car.model}
+                <NavigationLink key={car.id} href={`/car_detail?id=${car.id}`}>
+                  <div
+                    key={car.id}
+                    className="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 bg-white/50 backdrop-blur-sm text-white"
+                  >
+                    <div className="flex-1 min-w-0 text-black">
+                      <div className="text-lg font-semibold text-black">
+                        {car.make} {car.model}
+                      </div>
+                      <div className="text-sm text-gray-900 ">
+                        Year: {car.year}
+                      </div>
+                      <div className="text-sm text-gray-900">
+                        Color: {car.color}
+                      </div>
+                      <div className="text-sm text-gray-900">
+                        Mileage: {car.mileage?.toLocaleString()} miles
+                      </div>
+                      <div className="text-sm text-gray-900">
+                        Gearbox: {car.gearbox}
+                      </div>
+                      <div className="text-sm text-gray-900">
+                        Fuel Type: {car.fuel_type}
+                      </div>
+                      <div className="text-lg font-bold text-green-900 mt-2">
+                        £{formatPrice(car.price)}
+                      </div>
                     </div>
-                    <div className="text-sm text-gray-900 ">
-                      Year: {car.year}
-                    </div>
-                    <div className="text-sm text-gray-900">
-                      Color: {car.color}
-                    </div>
-                    <div className="text-sm text-gray-900">
-                      Mileage: {car.mileage?.toLocaleString()} miles
-                    </div>
-                    <div className="text-sm text-gray-900">
-                      Gearbox: {car.gearbox}
-                    </div>
-                    <div className="text-sm text-gray-900">
-                      Fuel Type: {car.fuel_type}
-                    </div>
-                    <div className="text-lg font-bold text-green-900 mt-2">
-                      £{formatPrice(car.price)}
+                    <div className="flex-shrink-0 w-36 h-36 rounded-lg overflow-hidden flex items-center justify-center">
+                      <Image
+                        width={100}
+                        height={100}
+                        src="/assets/Default-Car.png"
+                        alt={`${car.make} ${car.model}`}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                  <div className="flex-shrink-0 w-36 h-36 rounded-lg overflow-hidden flex items-center justify-center">
-                    <Image
-                      src="/assets/Default-Car.png"
-                      alt={`${car.make} ${car.model}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
+                </NavigationLink>
               ))}
             </div>
           </div>

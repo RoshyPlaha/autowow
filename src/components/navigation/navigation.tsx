@@ -107,7 +107,7 @@ const Nav = () => {
               Blog
             </Link>
             <Link
-              href={`/demo`}
+              href={`/vortex`}
               className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
             >
               Demo

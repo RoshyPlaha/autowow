@@ -19,7 +19,7 @@ export default function TransitionLink({
     e.preventDefault();
 
     const overlay = document.getElementById("page-transition");
-    const logo = document.getElementById("logo");
+    const logo = document.getElementById("transition-logo");
 
     if (!overlay) {
       router.push(href);
