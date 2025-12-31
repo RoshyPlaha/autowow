@@ -46,6 +46,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.13.4",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.14.2",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.460.0",
     "next": "^15.3.6",
@@ -59,7 +60,6 @@
     "react-markdown": "^9.0.1",
     "react-stripe-js": "^1.1.5",
     "recharts": "^3.5.1",
-    "sonner": "^1.7.1",
     "stripe": "^17.4.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"

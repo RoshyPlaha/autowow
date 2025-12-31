@@ -1,20 +1,17 @@
 "use client";
 
-import { Header } from "@/components/layout/header_default";
 import { Footer } from "@/components/layout/footer_default";
 import DashboardExample from "@/components/dashboard-example/dashboard-example";
 import WebsiteVideoExample from "@/components/video-example/video-example";
 import FeaturesPage from "@/components/features/page";
 import DemoButton from "@/components/button/demo";
 import SearchBarExample from "@/components/video-example/search-bar-example";
-
-const COMPANY_NAME = "AR";
-const primaryColor = "#09293c";
+import Nav from "@/components/navigation/navigation";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col font-merriweather bg-white">
-      <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Nav />
 
       {/* Hero Section */}
       <div className="flex-1 flex items-center justify-center px-4 md:px-8 lg:px-8 py-8 md:py-8 bg-white">
@@ -116,7 +113,10 @@ export default function Home() {
       </div>
       <FeaturesPage />
 
-      <div id="about" className="flex-1 flex items-start justify-center px-4 md:px-8 lg:px-8 py-8 md:py-8 bg-white">
+      <div
+        id="about"
+        className="flex-1 flex items-start justify-center px-4 md:px-8 lg:px-8 py-8 md:py-8 bg-white"
+      >
         <div className="max-w-7xl w-full grid grid-cols-1 gap-12 lg:gap-12">
           <div className="space-y-6 order-1 lg:order-1">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a3266] leading-tight font-merriweather">
@@ -157,8 +157,7 @@ export default function Home() {
       </div>
 
       <DemoButton />
-
-      <Footer brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Footer />
     </div>
   );
 }

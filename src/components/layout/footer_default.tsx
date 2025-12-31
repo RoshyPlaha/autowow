@@ -1,12 +1,9 @@
 import Image from "next/image";
 
-export const Footer = ({
-  brandName,
-  primaryColor,
-}: {
-  brandName: string;
-  primaryColor: string;
-}) => {
+const primaryColor = "#09293c";
+const COMPANY_NAME = "AR";
+
+export const Footer = () => {
   return (
     <footer
       className="text-white relative z-10"
@@ -19,7 +16,7 @@ export const Footer = ({
           {/* Logo Column */}
           <div className="flex items-center justify-center md:justify-start">
             <Image
-              src={`/assets/logos/${brandName}.png`}
+              src={`/assets/logos/${COMPANY_NAME}.png`}
               alt="logo"
               width={150}
               height={150}

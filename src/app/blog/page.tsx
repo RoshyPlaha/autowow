@@ -1,18 +1,15 @@
 import { Footer } from "@/components/layout/footer_default";
-import { Header } from "@/components/layout/header_default";
 import { getAllBlogThumbnails } from "@/lib/get-blogs";
 import BlogMainImage from "@/components/blog/blog-main-image";
 import Link from "next/link";
-
-const COMPANY_NAME = "AR";
-const primaryColor = "#09293c";
+import Nav from "@/components/navigation/navigation";
 
 export default async function BlogIndex() {
   const posts = await getAllBlogThumbnails();
 
   return (
     <div className="min-h-screen flex flex-col font-merriweather bg-white">
-      <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Nav />
       <div className="max-w-7xl mx-auto py-12 px-4 md:px-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1a3266] mb-12 font-merriweather">
           Blog
@@ -26,11 +23,7 @@ export default async function BlogIndex() {
               <Link href={`/blog/${post.slug}`} className="block">
                 {/* Image Container with Date Banner */}
                 <div className="relative w-full h-64 md:h-80 overflow-hidden">
-                  {post.image && (
-                    <BlogMainImage
-                      src={post.image}
-                    />
-                  )}
+                  {post.image && <BlogMainImage src={post.image} />}
                   {/* Date Banner - Overlapping top-right */}
                   <div className="absolute top-4 right-4 bg-[#1a3266] text-white px-4 py-2 rounded">
                     <span className="text-sm md:text-base font-merriweather font-medium">
@@ -82,7 +75,7 @@ export default async function BlogIndex() {
           ))}
         </div>
       </div>
-      <Footer brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Footer />
     </div>
   );
 }
