@@ -1,15 +1,12 @@
-import Link from "next/link";
+import NavigationLink from "@/components/page-animation/transition-link";
 import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import { getBlogPostBySlug, getAllBlogSlugs } from "@/lib/get-blogs";
-import { Header } from "@/components/layout/header_default";
 import { Footer } from "@/components/layout/footer_default";
 import Image from "next/image";
 import CodeSnippet from "@/components/blog/code-snippet";
 import BlogMainImage from "@/components/blog/blog-main-image";
-
-const COMPANY_NAME = "AR";
-const primaryColor = "#09293c";
+import Nav from "@/components/navigation/navigation";
 
 // Markdown components for rendering
 const markdownComponents = {
@@ -153,35 +150,35 @@ export default async function BlogPost({ params }: any) {
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col font-merriweather bg-white">
-        <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
+        <Nav />
         <div className="flex-1 flex items-center justify-center px-4">
           <div className="text-center">
             <h1 className="text-4xl font-bold text-[#1a3266] mb-4">
               Post Not Found
             </h1>
-            <Link
+            <NavigationLink
               href="/blog"
               className="text-[#1a3266] underline hover:text-[#7db3d3]"
             >
               ← Back to Blog
-            </Link>
+            </NavigationLink>
           </div>
         </div>
-        <Footer brandName={COMPANY_NAME} primaryColor={primaryColor} />
+        <Footer />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen flex flex-col font-merriweather bg-white">
-      <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Nav />ƒ
       <div className="flex-1 max-w-4xl mx-auto py-12 px-4 md:px-8 w-full">
-        <Link
+        <NavigationLink
           href="/blog"
           className="text-[#1a3266] underline hover:text-[#7db3d3] mb-8 inline-block"
         >
           ← Back to Blog
-        </Link>
+        </NavigationLink>
 
         {/* Featured Image */}
         {post.image && (
@@ -248,15 +245,15 @@ export default async function BlogPost({ params }: any) {
         )}
 
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <Link
+          <NavigationLink
             href="/blog"
             className="text-[#1a3266] underline hover:text-[#7db3d3]"
           >
             ← Back to Blog
-          </Link>
+          </NavigationLink>
         </div>
       </div>
-      <Footer brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Footer />
     </div>
   );
 }
