@@ -48,7 +48,7 @@ const Nav = () => {
         </button>
         <TransitionLink
           href={`/blog`}
-          className="hidden md:block px-4 py-2 text-left text-white-100 bg-green-900 transition-colors"
+          className="hidden md:block px-4 py-2 text-left text-white-100 bg-blue-900 transition-colors"
         >
           Blog
         </TransitionLink>

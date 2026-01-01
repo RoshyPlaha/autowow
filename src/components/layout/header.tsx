@@ -67,11 +67,11 @@ export const Header = ({
       id="header-container"
       className="w-full h-28 flex items-center justify-between px-4 md:px-16 relative z-50 text-white"
       style={{
-        backgroundColor: hexToRgba(primaryColor, 0.5),
+        backgroundColor: hexToRgba("#" + primaryColor, 0.9),
       }}
     >
       <nav className="flex gap-4">
-        <NavigationLink href={`/`}>
+        <NavigationLink href={`/${brandName}`}>
           <Image
             src={`/assets/logos/${brandName}.png`}
             alt="Autoro"
@@ -85,16 +85,16 @@ export const Header = ({
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-6">
         <NavigationLink
-          href={`/`}
+          href={`/${brandName}`}
           className="px-6 py-3 text-left text-white-100transition-coƒlors"
         >
           Home
         </NavigationLink>
         <NavigationLink
-          href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
+          href={`/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
           className="px-6 py-3 text-left text-white-100 transition-colors"
         >
-          Dummy Button 1
+          Current Stock
         </NavigationLink>
         <NavigationLink
           href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
@@ -145,22 +145,19 @@ export const Header = ({
           <nav className="flex flex-col py-4">
             <NavigationLink
               href={`/`}
-              className="px-6 py-3 text-left text-white-100transition-coƒlors"
+              className="px-6 py-3 text-left text-black transition-coƒlors"
             >
               Home
             </NavigationLink>
-            <button
-              className="px-6 py-3 text-left text-gray-800 hover:bg-gray-100 transition-colors"
-              onClick={() => {
-                console.log("About Us clicked");
-                setIsMobileMenuOpen(false);
-              }}
+            <NavigationLink
+              href={`/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
+              className="px-6 py-3 text-left text-black transition-colors"
             >
-              Dummy Button 1
-            </button>
+              Current Stock
+            </NavigationLink>
             <NavigationLink
               href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
-              className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
+              className="px-6 py-3 text-left text-black transition-colors"
             >
               Free Car Valuation
             </NavigationLink>

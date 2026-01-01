@@ -11,7 +11,7 @@ const CarDetail = () => {
   const searchParams = useSearchParams();
 
   const brandName = searchParams?.get("brandName") || "AR";
-  const primaryColor = searchParams?.get("primaryColor") || "#b4b4b4";
+  const primaryColor = searchParams?.get("primaryColor") || "#f4f4ed";
 
   // Mock car data
   const carData = {
@@ -34,13 +34,12 @@ const CarDetail = () => {
       <Header brandName={brandName} primaryColor={primaryColor} />
 
       <div className="flex-1 relative">
-       
         {/* Main Content */}
         <div className="ml-12">
           {/* Back to Results Link */}
           <div className="px-4 md:px-8 pt-6 pb-4">
             <Link
-              href={`/${brandName}`}
+              href={`all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
               className="text-gray-700 hover:text-gray-900 transition-colors inline-flex items-center gap-2"
             >
               <span>←</span>
@@ -79,39 +78,59 @@ const CarDetail = () => {
               <div className="space-y-4 mb-8">
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">PRICE:</span>
-                  <span className="text-black font-semibold">{carData.price}</span>
+                  <span className="text-black font-semibold">
+                    {carData.price}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">COLOUR:</span>
-                  <span className="text-black font-semibold">{carData.colour}</span>
+                  <span className="text-black font-semibold">
+                    {carData.colour}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">INTERIOR:</span>
-                  <span className="text-black font-semibold">{carData.interior}</span>
+                  <span className="text-black font-semibold">
+                    {carData.interior}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">YEAR:</span>
-                  <span className="text-black font-semibold">{carData.year}</span>
+                  <span className="text-black font-semibold">
+                    {carData.year}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">MILEAGE:</span>
-                  <span className="text-black font-semibold">{carData.mileage}</span>
+                  <span className="text-black font-semibold">
+                    {carData.mileage}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">ENGINE:</span>
-                  <span className="text-black font-semibold">{carData.engine}</span>
+                  <span className="text-black font-semibold">
+                    {carData.engine}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
-                  <span className="text-gray-600 font-medium">TRANSMISSION:</span>
-                  <span className="text-black font-semibold">{carData.transmission}</span>
+                  <span className="text-gray-600 font-medium">
+                    TRANSMISSION:
+                  </span>
+                  <span className="text-black font-semibold">
+                    {carData.transmission}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">BODY STYLE:</span>
-                  <span className="text-black font-semibold">{carData.bodyStyle}</span>
+                  <span className="text-black font-semibold">
+                    {carData.bodyStyle}
+                  </span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-200 pb-2">
                   <span className="text-gray-600 font-medium">FUEL:</span>
-                  <span className="text-black font-semibold">{carData.fuel}</span>
+                  <span className="text-black font-semibold">
+                    {carData.fuel}
+                  </span>
                 </div>
               </div>
 
@@ -134,14 +153,15 @@ const CarDetail = () => {
   );
 };
 
-
 const CarDetailContent = () => {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-lg">Loading...</div>
+        </div>
+      }
+    >
       <CarDetail />
     </Suspense>
   );

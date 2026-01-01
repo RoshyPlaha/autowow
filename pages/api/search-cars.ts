@@ -12,6 +12,12 @@ export default async function handler(
     console.log("brandName", req.body.brandName);
     console.log("Request body:", req.body);
 
+    if (req.body.message === "") {
+      console.log("Getting all cars as no message was provided");
+      const rows = await carQueries.getAll();
+      return res.status(200).json({ cars: rows || [] });
+    }
+
     const semtantic_car_model: SemanticCarModel = await extractSemanticModel(
       req.body.message
     );

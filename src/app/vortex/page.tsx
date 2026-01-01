@@ -5,25 +5,17 @@ import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
-import NavigationLink from "@/components/page-animation/transition-link";
-import Image from "next/image";
+import { TableStockDisplay } from "@/components/table-stock-display/page";
 
 const COMPANY_NAME = "vortex";
 const BLOBNAME = "Vortex";
-const primaryColor = "#252525";
+const primaryColor = "252525";
 
 const examplePrompts = [
   "show me all petrol manual cars from before 2017 and less than 20,000 miles",
   "I need a budget car between £5000-£10000 thats newer than 2019",
   "all cars newer than 2018 and under £30000",
 ];
-
-const formatPrice = (price: number | undefined): string => {
-  if (!price) return "";
-  return Math.round(price).toLocaleString("en-GB", {
-    maximumFractionDigits: 0,
-  });
-};
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +27,9 @@ export default function Home() {
   const [displayedPrompt, setDisplayedPrompt] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoUrl, setVideoUrl] = useState<string>(
+    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4"
+  );
 
   const isSearchDisabled = useMemo(
     () => textInput.trim().length === 0 || isLoading,
@@ -86,10 +81,6 @@ export default function Home() {
     typingDelay,
     textInput,
   ]);
-
-  const videoUrl =
-    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4";
-
   // Handle video autoplay on mobile
   useEffect(() => {
     const video = videoRef.current;
@@ -181,9 +172,18 @@ export default function Home() {
       console.log("data", data);
       setErrorMessage("");
       setCarResults(data.cars || []); // Extract the cars array from the response
-
-      // Scroll to top when results are shown
+      
+      // Stop video and show white background when results are shown
       if (data.cars && data.cars.length > 0) {
+        setVideoUrl("");
+        
+        // Stop the video element if it exists
+        if (videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+        
+        // Scroll to top when results are shown
         const topElement = document.getElementById("header-container");
         if (topElement) {
           topElement.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -216,10 +216,7 @@ export default function Home() {
         </video>
       ) : (
         <div
-          className="fixed right-0 top-0 h-full w-3/4 sm:w-2/3 md:w-2/5 lg:w-1/3 bg-contain bg-right bg-no-repeat z-0 pointer-events-none"
-          style={{
-            backgroundImage: "url('/assets/car-background.png')",
-          }}
+          className="fixed inset-0 w-full h-full bg-white z-0 pointer-events-none"
         />
       )}
       <div
@@ -242,56 +239,7 @@ export default function Home() {
           </div>
         )}
 
-        {carResults.length > 0 && (
-          <div className="container mx-auto p-4">
-            <h2 className="text-2xl font-bold text-white mb-4 text-center p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 font-merriweather">
-              There are {carResults.length} cars found for your search
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {carResults.map((car: car) => (
-                <NavigationLink key={car.id} href={`/car_detail?id=${car.id}&brandName=${COMPANY_NAME}&primaryColor=${primaryColor}`}>
-                  <div
-                    key={car.id}
-                    className="p-4 shadow-sm hover:shadow-md transition-shadow flex gap-4 bg-white/90 backdrop-blur-sm text-white"
-                  >
-                    <div className="flex-1 min-w-0 text-black">
-                      <div className="text-lg font-semibold text-black">
-                        {car.make} {car.model}
-                      </div>
-                      <div className="text-sm text-gray-900 ">
-                        Year: {car.year}
-                      </div>
-                      <div className="text-sm text-gray-900">
-                        Color: {car.color}
-                      </div>
-                      <div className="text-sm text-gray-900">
-                        Mileage: {car.mileage?.toLocaleString()} miles
-                      </div>
-                      <div className="text-sm text-gray-900">
-                        Gearbox: {car.gearbox}
-                      </div>
-                      <div className="text-sm text-gray-900">
-                        Fuel Type: {car.fuel_type}
-                      </div>
-                      <div className="text-lg font-bold text-green-900 mt-2">
-                        £{formatPrice(car.price)}
-                      </div>
-                    </div>
-                    <div className="flex-shrink-0 w-36 h-36 overflow-hidden flex items-center justify-center">
-                      <Image
-                        width={100}
-                        height={100}
-                        src="/assets/car_default_2.png"
-                        alt={`${car.make} ${car.model}`}
-                        className=""
-                      />
-                    </div>
-                  </div>
-                </NavigationLink>
-              ))}
-            </div>
-          </div>
-        )}
+        <TableStockDisplay carResults={carResults} brandName={COMPANY_NAME} primaryColor={primaryColor} />
       </div>
       <div
         id="search-navigation"
