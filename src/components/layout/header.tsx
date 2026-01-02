@@ -97,10 +97,10 @@ export const Header = ({
           Current Stock
         </NavigationLink>
         <NavigationLink
-          href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
+          href={`/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
           className="px-6 py-3 text-left text-white-100 transition-colors"
         >
-          Dummy Button 2
+          Contact Us
         </NavigationLink>
         <NavigationLink
           href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
@@ -160,6 +160,12 @@ export const Header = ({
               className="px-6 py-3 text-left text-black transition-colors"
             >
               Free Car Valuation
+            </NavigationLink>
+            <NavigationLink
+              href={`/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
+              className="px-6 py-3 text-left text-black transition-colors"
+            >
+              Contact Us
             </NavigationLink>
           </nav>
         </div>

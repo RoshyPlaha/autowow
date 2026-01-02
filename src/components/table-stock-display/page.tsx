@@ -66,33 +66,32 @@ export const TableStockDisplay = ({
 
                   {/* Specifications */}
                   <div className="space-y-2 mb-4">
-                    <div className="text-sm text-black">
-                      <span className="font-medium">YEAR:</span>{" "}
-                      {formatYear(car.year)}
+                    <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                      <span className="text-sm text-gray-600 font-medium">YEAR:</span>
+                      <span className="text-sm text-black font-semibold">
+                        {formatYear(car.year)}
+                      </span>
                     </div>
-                    <div className="text-sm text-black">
-                      <span className="font-medium">COLOUR:</span>{" "}
-                      {Array.isArray(car.color)
-                        ? car.color.join(", ")
-                        : car.color || "N/A"}
+                    <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                      <span className="text-sm text-gray-600 font-medium">PRICE:</span>
+                      <span className="text-sm text-black font-semibold">
+                        {car.price ? `£${formatPrice(car.price)}` : "UNDER OFFER"}
+                      </span>
                     </div>
-                    <div className="text-sm text-black">
-                      <span className="font-medium">MILEAGE:</span>{" "}
-                      {formatMileage(car.mileage)}
+                    <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                      <span className="text-sm text-gray-600 font-medium">COLOUR:</span>
+                      <span className="text-sm text-black font-semibold">
+                        {Array.isArray(car.color)
+                          ? car.color.join(", ")
+                          : car.color || "N/A"}
+                      </span>
                     </div>
-                  </div>
-
-                  {/* Price or Status */}
-                  <div className="mb-6">
-                    {car.price ? (
-                      <div className="text-lg font-bold text-black">
-                        £{formatPrice(car.price)}
-                      </div>
-                    ) : (
-                      <div className="text-lg font-bold text-black">
-                        UNDER OFFER
-                      </div>
-                    )}
+                    <div className="flex justify-between items-center border-b border-gray-200 pb-2">
+                      <span className="text-sm text-gray-600 font-medium">MILEAGE:</span>
+                      <span className="text-sm text-black font-semibold">
+                        {formatMileage(car.mileage)}
+                      </span>
+                    </div>
                   </div>
 
                   {/* View Vehicle Button */}
@@ -100,7 +99,7 @@ export const TableStockDisplay = ({
                     href={`/car_detail?id=${car.id}&brandName=${encodeURIComponent(brandName)}&primaryColor=${encodeURIComponent(primaryColor)}`}
                     className="mt-auto"
                   >
-                    <button className="w-full bg-black text-white px-6 py-3 font-semibold hover:bg-gray-800 transition-colors">
+                    <button className="w-full bg-black text-white px-6 py-3 font-semibold hover:bg-gray-500 transition-colors">
                       VIEW VEHICLE
                     </button>
                   </TransitionLink>

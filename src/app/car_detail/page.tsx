@@ -33,9 +33,9 @@ const CarDetail = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Header brandName={brandName} primaryColor={primaryColor} />
 
-      <div className="flex-1 relative">
+      <div className="flex-1 relative flex items-center justify-center">
         {/* Main Content */}
-        <div className="ml-12">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Back to Results Link */}
           <div className="px-4 md:px-8 pt-6 pb-4">
             <Link
@@ -48,7 +48,7 @@ const CarDetail = () => {
           </div>
 
           {/* Car Detail Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 md:px-8 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 md:px-8 pb-12 items-center">
             {/* Left: Car Image */}
             <div className="relative">
               <div className="relative w-full aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden">
