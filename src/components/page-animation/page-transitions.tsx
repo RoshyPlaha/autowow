@@ -1,12 +1,28 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import gsap from "gsap";
 import Image from "next/image";
 
 export default function PageTransition() {
   const overlayRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
+  const [logoPath, setLogoPath] = useState("/assets/logos/AR.png");
+  const [primaryColor, setPrimaryColor] = useState("252525");
+
+  // Get brandName from search params and update logo path
+  useEffect(() => {
+    const brandName = searchParams?.get("brandName") || "AR";
+    const colorParam = searchParams?.get("primaryColor") || "09293d";
+    // Construct logo path based on brandName
+    const logo = `/assets/logos/${brandName}.png`;
+    setLogoPath(logo);
+    // Ensure primaryColor has # prefix
+    const color = colorParam.startsWith("#") ? colorParam : `#${colorParam}`;
+    setPrimaryColor(color);
+  }, [searchParams]);
 
   useEffect(() => {
     // initial hidden state
@@ -25,15 +41,17 @@ export default function PageTransition() {
     <div
       ref={overlayRef}
       id="page-transition"
-      className="fixed inset-0 z-[9999] bg-[#09293c] pointer-events-none flex items-center justify-center"
+      className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center"
+      style={{ backgroundColor: primaryColor }}
     >
       <div ref={logoRef} id="transition-logo">
         <Image
-          src="/assets/logos/AR.png"
+          src={logoPath}
           alt="Brand logo"
           width={120}
           height={120}
           priority
+          key={logoPath} // Force re-render when logo changes
         />
       </div>
     </div>

@@ -65,7 +65,7 @@ const Nav = () => {
           About Us
         </button>
         <TransitionLink
-          href={`/vortex`}
+          href={`/demo?brandName=vortex&primaryColor=#252525`}
           className="hidden md:block px-4 py-2 text-left text-white-100 bg-green-900 transition-colors"
         >
           See a Demo Here
@@ -106,7 +106,7 @@ const Nav = () => {
               Blog
             </TransitionLink>
             <TransitionLink
-              href={`/vortex`}
+              href={`/demo?brandName=vortex&primaryColor=#252525`}
               className="px-6 py-3 text-left text-white-100 bg-green-900 transition-colors"
             >
               Demo

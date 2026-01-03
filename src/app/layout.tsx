@@ -5,6 +5,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import PageTransition from "@/components/page-animation/page-transitions";
 import TransitionProvider from "@/components/page-animation/transitions-provider";
+import { Suspense } from "react";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -82,7 +83,9 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} ${merriweather.variable} antialiased`}
       >
-        <PageTransition />
+        <Suspense fallback={null}>
+          <PageTransition />
+        </Suspense>
         <TransitionProvider>{children}</TransitionProvider>
         <Analytics />
       </body>

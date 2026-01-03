@@ -12,8 +12,8 @@ const AllStock = () => {
   const searchParams = useSearchParams();
 
   const brandName = searchParams?.get("brandName") || "AR";
+  const primaryColor = searchParams?.get("primaryColor") || "252525";
 
-  const primaryColor = searchParams?.get("primaryColor") || "#f4f4ed";
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const [carResults, setCarResults] = useState<car[]>([]);

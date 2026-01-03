@@ -1,15 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { car } from "models/car_model";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Button } from "@/components/ui/button";
 import { TableStockDisplay } from "@/components/table-stock-display/page";
-
-const COMPANY_NAME = "vortex";
-const BLOBNAME = "Vortex";
-const primaryColor = "252525";
+import { useSearchParams } from "next/navigation";
 
 const examplePrompts = [
   "show me all petrol manual cars from before 2017 and less than 20,000 miles",
@@ -17,7 +14,12 @@ const examplePrompts = [
   "all cars newer than 2018 and under £30000",
 ];
 
-export default function Home() {
+const Demo = () => {
+  const searchParams = useSearchParams();
+
+  const brandName = searchParams?.get("brandName") || "AR";
+  const primaryColor = searchParams?.get("primaryColor") || "#f4f4ed";
+
   const [isLoading, setIsLoading] = useState(false);
   const [carResults, setCarResults] = useState<car[]>([]);
   const [textInput, setTextInput] = useState("");
@@ -28,7 +30,7 @@ export default function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoUrl, setVideoUrl] = useState<string>(
-    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + BLOBNAME + ".mp4"
+    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + brandName + ".mp4"
   );
 
   const isSearchDisabled = useMemo(
@@ -156,7 +158,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: textInput, brandName: COMPANY_NAME }),
+        body: JSON.stringify({ message: textInput, brandName: brandName }),
       });
 
       if (response.status === 204) {
@@ -172,17 +174,17 @@ export default function Home() {
       console.log("data", data);
       setErrorMessage("");
       setCarResults(data.cars || []); // Extract the cars array from the response
-      
+
       // Stop video and show white background when results are shown
       if (data.cars && data.cars.length > 0) {
         setVideoUrl("");
-        
+
         // Stop the video element if it exists
         if (videoRef.current) {
           videoRef.current.pause();
           videoRef.current.currentTime = 0;
         }
-        
+
         // Scroll to top when results are shown
         const topElement = document.getElementById("header-container");
         if (topElement) {
@@ -201,7 +203,7 @@ export default function Home() {
 
   return (
     <>
-      <Header brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Header brandName={brandName} primaryColor={primaryColor} />
       {videoUrl ? (
         <video
           ref={videoRef}
@@ -215,9 +217,7 @@ export default function Home() {
           <source src={videoUrl} type="video/mp4" />
         </video>
       ) : (
-        <div
-          className="fixed inset-0 w-full h-full bg-white z-0 pointer-events-none"
-        />
+        <div className="fixed inset-0 w-full h-full bg-white z-0 pointer-events-none" />
       )}
       <div
         id="top"
@@ -239,7 +239,11 @@ export default function Home() {
           </div>
         )}
 
-        <TableStockDisplay carResults={carResults} brandName={COMPANY_NAME} primaryColor={primaryColor} />
+        <TableStockDisplay
+          carResults={carResults}
+          brandName={brandName}
+          primaryColor={primaryColor}
+        />
       </div>
       <div
         id="search-navigation"
@@ -333,7 +337,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer brandName={COMPANY_NAME} primaryColor={primaryColor} />
+      <Footer brandName={brandName} primaryColor={primaryColor} />
 
       <style jsx>{`
         @keyframes searchShimmer {
@@ -361,3 +365,20 @@ export default function Home() {
     </>
   );
 }
+
+const DemoContent = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-lg">Loading...</div>
+        </div>
+      }
+    >
+      <Demo />
+    </Suspense>
+  );
+}
+
+export default DemoContent;
+

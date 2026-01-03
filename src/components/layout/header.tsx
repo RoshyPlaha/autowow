@@ -14,6 +14,8 @@ export const Header = ({
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  console.log("primaryColor in header is", primaryColor);
+
   useEffect(() => {
     // Initial check
     const checkLoginStatus = () => {
@@ -67,11 +69,11 @@ export const Header = ({
       id="header-container"
       className="w-full h-28 flex items-center justify-between px-4 md:px-16 relative z-50 text-white"
       style={{
-        backgroundColor: hexToRgba("#" + primaryColor, 0.9),
+        backgroundColor: hexToRgba("#" + primaryColor, 1),
       }}
     >
       <nav className="flex gap-4">
-        <NavigationLink href={`/${brandName}`}>
+        <NavigationLink href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}>
           <Image
             src={`/assets/logos/${brandName}.png`}
             alt="Autoro"
@@ -85,31 +87,31 @@ export const Header = ({
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-6">
         <NavigationLink
-          href={`/${brandName}`}
+          href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}
           className="px-6 py-3 text-left text-white-100transition-coƒlors"
         >
           Home
         </NavigationLink>
         <NavigationLink
-          href={`/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
+          href={`/`}
+          className="px-6 py-3 text-left text-white-100transition-coƒlors"
+        >
+          AutoRo Home
+        </NavigationLink>
+        <NavigationLink
+          href={`/demo/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
           className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Current Stock
         </NavigationLink>
         <NavigationLink
-          href={`/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
+          href={`/demo/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
           className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Contact Us
         </NavigationLink>
         <NavigationLink
-          href={`/dummy?brandName=${brandName}&primaryColor=${primaryColor}`}
-          className="px-6 py-3 text-left text-white-100 transition-colors"
-        >
-          Dummy Button 3
-        </NavigationLink>
-        <NavigationLink
-          href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
+          href={`/demo/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
           className="px-6 py-3 text-left text-white-100 transition-colors"
         >
           Free Car Valuation
@@ -147,22 +149,28 @@ export const Header = ({
               href={`/`}
               className="px-6 py-3 text-left text-black transition-coƒlors"
             >
+              AutoRo Home
+            </NavigationLink>
+            <NavigationLink
+              href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}
+              className="px-6 py-3 text-left text-black transition-coƒlors"
+            >
               Home
             </NavigationLink>
             <NavigationLink
-              href={`/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
+              href={`/demo/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
               className="px-6 py-3 text-left text-black transition-colors"
             >
               Current Stock
             </NavigationLink>
             <NavigationLink
-              href={`/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
+              href={`/demo/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
               className="px-6 py-3 text-left text-black transition-colors"
             >
               Free Car Valuation
             </NavigationLink>
             <NavigationLink
-              href={`/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
+              href={`/demo/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
               className="px-6 py-3 text-left text-black transition-colors"
             >
               Contact Us

@@ -9,7 +9,7 @@ import { Suspense } from "react";
 const ContactUsContent = () => {
   const searchParams = useSearchParams();
   const brandName = searchParams?.get("brandName") || "AR";
-  const primaryColor = searchParams?.get("primaryColor") || "#09293c";
+  const primaryColor = searchParams?.get("primaryColor") || "09293c";
 
   const [formData, setFormData] = useState({
     firstName: "",
