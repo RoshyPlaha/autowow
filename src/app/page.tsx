@@ -88,7 +88,7 @@ export default function Home() {
               patterns to inform stock decisions and highlight buying intent
               trends. <br></br>
               <br></br>Get a monthly generated report on your website
-              performance including in our transparent pricing.
+              performance included in our transparent pricing.
               <br></br>This is the future of the web.
             </p>
           </div>
