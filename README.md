@@ -21,3 +21,10 @@ Lastly, to start the web server and visit localhost:3000
 ```bash
 npm run dev
 ```
+
+Demo example:
+
+replace brandName with image in public/assets/logos
+replace primary color with any hex value. Do not pass in the '#' as this is not escaped
+
+http://localhost:3000/demo?brandName=Auto2000&primaryColor=FFFF00
