@@ -52,7 +52,7 @@ export default function Home() {
                 </span>
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#1a3266] font-merriweather relative">
-                    £40
+                    £89
                     <span className="absolute bottom-0 left-0 right-0 h-0.5 md:h-1 bg-white"></span>
                   </span>
                   <span className="text-lg md:text-xl lg:text-2xl text-[#1a3266]  font-merriweather align-super">
