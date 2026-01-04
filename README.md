@@ -23,8 +23,9 @@ npm run dev
 ```
 
 Demo example:
+To generate independent demo examples for each company, you must place a brand logo on the vercel public storage blob inside the logos folder. 
+To set the theme of the pages, you must decide a HEX colour - without the # as this is not escaped in a URL.
 
-replace brandName with image in public/assets/logos
-replace primary color with any hex value. Do not pass in the '#' as this is not escaped
+You can then visit localhost3000 and pass in your params. You do not need to provide the full URL for the logo - just the name.
 
 http://localhost:3000/demo?brandName=Auto2000&primaryColor=FFFF00

@@ -17,8 +17,8 @@ export default function PageTransition() {
     const brandName = searchParams?.get("brandName") || "AR";
     const colorParam = searchParams?.get("primaryColor") || "09293d";
     // Construct logo path based on brandName
-    const logo = `/assets/logos/${brandName}.png`;
-    setLogoPath(logo);
+    const logoUrl = `https://uyxjzyhjh8n5b67n.public.blob.vercel-storage.com/demo_logos/${brandName}.png`;
+    setLogoPath(logoUrl);
     // Ensure primaryColor has # prefix
     const color = colorParam.startsWith("#") ? colorParam : `#${colorParam}`;
     setPrimaryColor(color);
