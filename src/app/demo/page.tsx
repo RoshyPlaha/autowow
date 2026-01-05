@@ -30,7 +30,7 @@ const Demo = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoUrl, setVideoUrl] = useState<string>(
-    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + brandName + ".mp4"
+    process.env.NEXT_PUBLIC_BACKGROUND_VIDEO_URL + "Vortex" + ".mp4"
   );
 
   const isSearchDisabled = useMemo(
