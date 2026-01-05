@@ -230,7 +230,7 @@ const Demo = () => {
         </div>
 
         <p className="text-center text-white">
-          This is a beta product. Send feedback to roshsplaha@gmail.com
+          This is a demo product only. Contact roshsplaha@gmail.com for more information.
         </p>
 
         {errorMessage && (
