@@ -13,9 +13,12 @@ export const Header = ({
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Normalize primaryColor (remove # if present) and determine text color
+  const normalizedColor = primaryColor.replace(/^#/, "").toUpperCase();
+  const textColor = normalizedColor === "FFFFFF" ? "#000000" : "#FFFFFF";
 
   const logoUrl = `https://uyxjzyhjh8n5b67n.public.blob.vercel-storage.com/demo_logos/${brandName}.png`;
-
 
   console.log("primaryColor in header is", primaryColor);
 
@@ -76,7 +79,9 @@ export const Header = ({
       }}
     >
       <nav className="flex gap-4">
-        <NavigationLink href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}>
+        <NavigationLink
+          href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}
+        >
           <Image
             src={logoUrl}
             alt="Autoro"
@@ -91,33 +96,33 @@ export const Header = ({
       <nav className="hidden md:flex items-center gap-6">
         <NavigationLink
           href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}
-          className="px-6 py-3 text-left text-white-100transition-coƒlors"
+          className={`px-6 py-3 text-left text-white-100 transition-colors`}
         >
           Home
         </NavigationLink>
         <NavigationLink
           href={`/`}
-          className="px-6 py-3 text-left text-white-100transition-coƒlors"
+          className="px-6 py-3 text-left transition-colors"
         >
-          AutoRo Home
+          <span style={{ color: textColor }}>AutoRo Home</span>
         </NavigationLink>
         <NavigationLink
           href={`/demo/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
-          className="px-6 py-3 text-left text-white-100 transition-colors"
+          className="px-6 py-3 text-left transition-colors"
         >
-          Current Stock
+          <span style={{ color: textColor }}>Current Stock</span>
         </NavigationLink>
         <NavigationLink
           href={`/demo/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
-          className="px-6 py-3 text-left text-white-100 transition-colors"
+          className="px-6 py-3 text-left transition-colors"
         >
-          Contact Us
+          <span style={{ color: textColor }}>Contact Us</span>
         </NavigationLink>
         <NavigationLink
           href={`/demo/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
-          className="px-6 py-3 text-left text-white-100 transition-colors"
+          className="px-6 py-3 text-left transition-colors"
         >
-          Free Car Valuation
+          <span style={{ color: textColor }}>Free Car Valuation</span>
         </NavigationLink>
       </nav>
 
@@ -150,33 +155,33 @@ export const Header = ({
           <nav className="flex flex-col py-4">
             <NavigationLink
               href={`/`}
-              className="px-6 py-3 text-left text-black transition-coƒlors"
+              className="px-6 py-3 text-left transition-colors"
             >
-              AutoRo Home
+              <span style={{ color: textColor }}>AutoRo Home</span>
             </NavigationLink>
             <NavigationLink
               href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}
-              className="px-6 py-3 text-left text-black transition-coƒlors"
+              className="px-6 py-3 text-left transition-colors"
             >
-              Home
+              <span style={{ color: 'black' }}>Home</span>
             </NavigationLink>
             <NavigationLink
               href={`/demo/all_stock?brandName=${brandName}&primaryColor=${primaryColor}`}
-              className="px-6 py-3 text-left text-black transition-colors"
+              className="px-6 py-3 text-left transition-colors"
             >
-              Current Stock
+              <span style={{ color: 'black' }}>Current Stock</span>
             </NavigationLink>
             <NavigationLink
               href={`/demo/valuation?brandName=${brandName}&primaryColor=${primaryColor}`}
-              className="px-6 py-3 text-left text-black transition-colors"
+              className="px-6 py-3 text-left transition-colors"
             >
-              Free Car Valuation
+              <span style={{ color: 'black' }}>Free Car Valuation</span>
             </NavigationLink>
             <NavigationLink
               href={`/demo/contact_us?brandName=${brandName}&primaryColor=${primaryColor}`}
-              className="px-6 py-3 text-left text-black transition-colors"
+              className="px-6 py-3 text-left transition-colors"
             >
-              Contact Us
+              <span style={{ color: 'black' }}>Contact Us</span>
             </NavigationLink>
           </nav>
         </div>
