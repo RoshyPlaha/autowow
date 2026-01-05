@@ -14,6 +14,9 @@ export const Header = ({
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const logoUrl = `https://uyxjzyhjh8n5b67n.public.blob.vercel-storage.com/demo_logos/${brandName}.png`;
+
+
   console.log("primaryColor in header is", primaryColor);
 
   useEffect(() => {
@@ -75,7 +78,7 @@ export const Header = ({
       <nav className="flex gap-4">
         <NavigationLink href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}>
           <Image
-            src={`/assets/logos/${brandName}.png`}
+            src={logoUrl}
             alt="Autoro"
             width={300}
             height={300}
