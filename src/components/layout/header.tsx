@@ -133,19 +133,22 @@ export const Header = ({
         aria-label="Toggle menu"
       >
         <span
-          className={`w-6 h-0.5 bg-white transition-all ${
+          className={`w-6 h-0.5 transition-all ${
             isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
           }`}
+          style={{ backgroundColor: textColor }}
         />
         <span
-          className={`w-6 h-0.5 bg-white transition-all ${
+          className={`w-6 h-0.5 transition-all ${
             isMobileMenuOpen ? "opacity-0" : ""
           }`}
+          style={{ backgroundColor: textColor }}
         />
         <span
-          className={`w-6 h-0.5 bg-white transition-all ${
+          className={`w-6 h-0.5 transition-all ${
             isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
           }`}
+          style={{ backgroundColor: textColor }}
         />
       </button>
 
