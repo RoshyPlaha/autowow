@@ -44,7 +44,7 @@ const Nav = () => {
           className="px-4 py-2 text-sm font-medium hover:opacity-80 transition-opacity"
           onClick={() => console.log("Contact Us clicked")}
         >
-          Contact: +44 7718215606
+          Contact: rosh@autoro.com
         </button>
         <TransitionLink
           href={`/blog`}

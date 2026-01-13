@@ -50,7 +50,7 @@ export const TableStockDisplay = ({
                 {/* Car Image */}
                 <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden mb-6">
                   <Image
-                    src="/assets/car_default_2.png"
+                    src="/assets/car_default_3.png"
                     alt={`${car.make} ${car.model}`}
                     fill
                     className="object-cover"
@@ -96,7 +96,7 @@ export const TableStockDisplay = ({
 
                   {/* View Vehicle Button */}
                   <TransitionLink
-                    href={`/car_detail?id=${car.id}&brandName=${encodeURIComponent(brandName)}&primaryColor=${encodeURIComponent(primaryColor)}`}
+                    href={`/demo/car_detail?id=${car.id}&brandName=${encodeURIComponent(brandName)}&primaryColor=${encodeURIComponent(primaryColor)}`}
                     className="mt-auto"
                   >
                     <button className="w-full bg-black text-white px-6 py-3 font-semibold hover:bg-gray-500 transition-colors">

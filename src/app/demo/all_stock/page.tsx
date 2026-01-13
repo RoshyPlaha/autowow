@@ -30,7 +30,7 @@ const AllStock = () => {
 
       if (response.status === 204) {
         setErrorMessage(
-          "No cars found. Please contact support at roshsplaha@gmail.com"
+          "No cars found. Please contact support at rosh@autoro.com"
         );
         setCarResults([]);
         return;

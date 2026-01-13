@@ -170,7 +170,7 @@ export default function Home() {
       if (response.status === 204) {
         console.warn("no cars found for query: ", textInput);
         setErrorMessage(
-          "No cars found for your query. Please contact support at roshsplaha@gmail.com"
+          "No cars found for your query. Please contact support at rosh@autoro.com"
         );
         setIsLoading(false);
         return;
