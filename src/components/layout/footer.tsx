@@ -7,6 +7,12 @@ export const Footer = ({
   brandName: string;
   primaryColor: string;
 }) => {
+
+
+
+  const logoUrl = `https://uyxjzyhjh8n5b67n.public.blob.vercel-storage.com/demo_logos/${brandName}.png`;
+
+
   const hexToRgba = (hex: string, alpha: number) => {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
@@ -26,7 +32,7 @@ export const Footer = ({
           {/* Logo Column */}
           <div className="flex items-center justify-center md:justify-start">
             <Image
-              src={`/assets/logos/${brandName}.png`}
+              src={logoUrl}
               alt="logo"
               width={150}
               height={150}

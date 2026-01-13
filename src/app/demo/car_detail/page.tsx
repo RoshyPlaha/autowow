@@ -26,7 +26,7 @@ const CarDetail = () => {
     transmission: "7-Speed Sequential",
     bodyStyle: "Coupe",
     fuel: "Petrol",
-    image: "/assets/car_default_2.png",
+    image: "/assets/car_default_3.png",
   };
 
   return (
