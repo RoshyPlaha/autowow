@@ -160,7 +160,7 @@ export const Header = ({
               href={`/`}
               className="px-6 py-3 text-left transition-colors"
             >
-              <span style={{ color: textColor }}>AutoRo Home</span>
+              <span style={{ color: 'black' }}>AutoRo Home</span>
             </NavigationLink>
             <NavigationLink
               href={`/demo?brandName=${brandName}&primaryColor=${primaryColor}`}
