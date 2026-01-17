@@ -164,7 +164,7 @@ const Demo = () => {
       if (response.status === 204) {
         console.warn("no cars found for query: ", textInput);
         setErrorMessage(
-          "No cars found for your query. Please contact support at rosh@autoro.com"
+          "No cars found for your query. Please contact support at rosh@autoro.space"
         );
         setIsLoading(false);
         return;
@@ -230,7 +230,7 @@ const Demo = () => {
         </div>
 
         <p className="text-center text-white">
-          This is a demo product only. Contact rosh@autoro.com for more information.
+          This is a demo product only. Contact rosh@autoro.space for more information.
         </p>
 
         {errorMessage && (
