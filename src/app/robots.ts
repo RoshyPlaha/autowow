@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
 
             }
         ],
-        sitemap: "https://capsules.today/sitemap.xml",
+        sitemap: "https://autoro.space/sitemap.xml",
     }
 }
